@@ -1388,6 +1388,551 @@
             }
             .footer-right { text-align: left; }
         }
+
+        /* ── NOTEBOOK DEEP DIVE ──────────────────────── */
+
+        .notebook-deep-section {
+            margin-top: 5rem;
+            padding-top: 5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .notebook-deep-intro {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .notebook-deep-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .notebook-deep-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .notebook-deep-desc {
+            font-size: 1.0625rem;
+            color: var(--text-2);
+            line-height: 1.78;
+        }
+
+        .notebook-insight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .notebook-insight-item {
+            padding: 2rem;
+            background: var(--surface);
+            transition: background 0.3s var(--ease);
+        }
+
+        .notebook-insight-item:hover {
+            background: var(--accent-bg);
+        }
+
+        .insight-label {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.625rem;
+            display: block;
+        }
+
+        .insight-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.625rem;
+            line-height: 1.3;
+        }
+
+        .insight-text {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        .water-block {
+            margin-top: 3rem;
+            padding: 2.5rem 3rem;
+            background: var(--text);
+            border-radius: 3px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .water-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.85;
+            flex-shrink: 0;
+        }
+
+        .water-content strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.875rem;
+        }
+
+        .water-content p {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.62);
+            line-height: 1.75;
+        }
+
+        .questions-block {
+            margin-top: 3rem;
+        }
+
+        .questions-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .questions-sub {
+            font-size: 0.875rem;
+            color: var(--text-3);
+            margin-bottom: 1.75rem;
+            line-height: 1.6;
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .question-card {
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-warm);
+            border-left: 2px solid var(--accent);
+            border-radius: 0 2px 2px 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.5;
+            transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .question-card:hover {
+            background: var(--accent-bg);
+        }
+
+        .question-card .question-status {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-style: normal;
+            font-size: 0.5625rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-top: 0.625rem;
+        }
+
+        .question-card .question-status.answered {
+            color: #6aab6a;
+        }
+
+        .personal-notes-block {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--bg-warm);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+        }
+
+        .personal-notes-heading {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .personal-notes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .personal-note {
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 2px;
+            border-top: 2px solid var(--border-2);
+        }
+
+        .personal-note-label {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 0.625rem;
+            display: block;
+        }
+
+        .personal-note-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.875rem;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        .method-quote {
+            margin-top: 3rem;
+            padding: 2rem 2.5rem;
+            background: var(--text);
+            border-radius: 3px;
+        }
+
+        .method-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .method-quote cite {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+        }
+
+        .lost-pages-block {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .lost-pages-stat {
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .lp-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .lp-text strong {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.375rem;
+        }
+
+        .lp-text p {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            line-height: 1.65;
+        }
+
+        /* ── LAST SUPPER DEEP ANALYSIS ───────────────── */
+
+        .last-supper-section {
+            background: var(--text);
+            padding: 8rem 0;
+        }
+
+        .ls-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            align-items: end;
+            margin-bottom: 4rem;
+        }
+
+        .last-supper-section .section-label {
+            color: var(--accent-2);
+        }
+
+        .last-supper-section .section-title {
+            color: white;
+            margin-top: 0.75rem;
+        }
+
+        .ls-header-desc {
+            font-size: 1.0625rem;
+            color: rgba(255,255,255,0.58);
+            line-height: 1.78;
+        }
+
+        .ls-full-image {
+            width: 100%;
+            border-radius: 3px;
+            margin-bottom: 4.5rem;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+            filter: contrast(110%) brightness(1.05);
+        }
+
+        .ls-discovery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5rem;
+        }
+
+        .ls-discovery-item {
+            padding: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s var(--ease);
+        }
+
+        .ls-discovery-item:hover {
+            background: rgba(255,255,255,0.04);
+        }
+
+        .ls-discovery-item:nth-child(odd) {
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .ls-discovery-tag {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            margin-bottom: 0.875rem;
+            display: block;
+        }
+
+        .ls-discovery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .ls-discovery-text {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.78;
+        }
+
+        .ls-pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.125rem, 1.75vw, 1.625rem);
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.55;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 5rem;
+            max-width: 58ch;
+        }
+
+        .ls-pull-quote cite {
+            display: block;
+            margin-top: 1.25rem;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-2);
+            letter-spacing: 0.1em;
+        }
+
+        .ls-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.625rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .ls-section-sub {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2.5rem;
+            max-width: 72ch;
+            line-height: 1.65;
+        }
+
+        .ls-apostle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5rem;
+        }
+
+        .ls-apostle-group {
+            padding: 2rem;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s var(--ease);
+        }
+
+        .ls-apostle-group:last-child {
+            border-right: none;
+        }
+
+        .ls-apostle-group:hover {
+            background: rgba(255,255,255,0.04);
+        }
+
+        .ls-group-position {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            margin-bottom: 0.625rem;
+        }
+
+        .ls-group-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.4;
+            margin-bottom: 0.375rem;
+        }
+
+        .ls-group-emotion {
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.875rem;
+            display: block;
+        }
+
+        .ls-group-desc {
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.72;
+        }
+
+        .ls-deterioration-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .ls-det-item {
+            padding: 1.875rem;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s var(--ease);
+        }
+
+        .ls-det-item:last-child {
+            border-right: none;
+        }
+
+        .ls-det-item:hover {
+            background: rgba(255,255,255,0.04);
+        }
+
+        .ls-det-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--accent-2);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .ls-det-event {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: 0.375rem;
+            line-height: 1.35;
+        }
+
+        .ls-det-detail {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.38);
+            line-height: 1.65;
+        }
+
+        @media (max-width: 1024px) {
+            .notebook-deep-intro { grid-template-columns: 1fr; gap: 2rem; }
+            .notebook-insight-grid { grid-template-columns: 1fr; }
+            .questions-grid { grid-template-columns: 1fr 1fr; }
+            .personal-notes-grid { grid-template-columns: 1fr 1fr; }
+            .lost-pages-block { grid-template-columns: 1fr; }
+            .water-block { grid-template-columns: 1fr; text-align: left; }
+            .ls-header { grid-template-columns: 1fr; gap: 2rem; }
+            .ls-discovery-grid { grid-template-columns: 1fr; }
+            .ls-discovery-item:nth-child(odd) { border-right: none; }
+            .ls-apostle-grid { grid-template-columns: 1fr 1fr; }
+            .ls-apostle-group { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .ls-apostle-group:last-child { border-bottom: none; }
+            .ls-deterioration-grid { grid-template-columns: 1fr 1fr; }
+            .ls-det-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .ls-det-item:last-child { border-bottom: none; }
+        }
+
+        @media (max-width: 768px) {
+            .questions-grid { grid-template-columns: 1fr; }
+            .personal-notes-grid { grid-template-columns: 1fr; }
+            .ls-apostle-grid { grid-template-columns: 1fr; }
+            .ls-deterioration-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -1566,6 +2111,189 @@
                 </div>
             </div>
         </div>
+
+        <!-- ── NOTEBOOK DEEP DIVE ──────────────────────────── -->
+        <div class="notebook-deep-section">
+
+            <div class="notebook-deep-intro">
+                <div>
+                    <h2 class="notebook-deep-title reveal">
+                        What the<br>pages<br><em>actually say.</em>
+                    </h2>
+                </div>
+                <div>
+                    <p class="notebook-deep-desc reveal">
+                        The popular image of Leonardo's notebooks — elegant flying machines and anatomical masterworks — is accurate but incomplete. The full picture is stranger, more intimate, and more revealing of how his mind actually worked. Within the same pages that contain geometry no contemporary could approach, you find grocery lists, accounts of debts owed by pupils, instructions for his housekeeper, and fragments of poetry that trail off mid-line. Leonardo did not organize his notebooks by subject because he did not organize knowledge by subject. To him, everything was adjacent to everything else.
+                    </p>
+                    <p class="notebook-deep-desc reveal reveal-delay-1" style="margin-top: 1rem;">
+                        He wrote to himself in the second person: "Do this first," "Remember to ask Maestro Giovanni," "You will never finish at this rate." He composed elaborate moral fables — hundreds of them — that he never published. He kept lists of questions he intended to answer, some of which remained open problems in science until the twentieth century. The notebooks are not just a record of what Leonardo knew. They are a record of what he was still trying to figure out.
+                    </p>
+                </div>
+            </div>
+
+            <!-- INSIGHT GRID: What's actually on the pages -->
+            <div class="notebook-insight-grid">
+                <div class="notebook-insight-item reveal">
+                    <span class="insight-label">The Deliberate Disorder</span>
+                    <div class="insight-title">Everything on the Same Page</div>
+                    <div class="insight-text">On a single page of the Codex Atlanticus, Leonardo might place a detailed mechanical drawing of a water-lifting device alongside the mechanics of a shoulder joint, a note about a book he wanted to borrow, and three lines of a fable about an oak tree. This was not disorganization — it was his epistemology. He believed that understanding any one thing required understanding what was adjacent to it, and that adjacency was determined by nature, not by academic convention. In the 15th century, no taxonomy of knowledge existed that could have contained what he was doing.</div>
+                </div>
+                <div class="notebook-insight-item reveal reveal-delay-1">
+                    <span class="insight-label">The Self-Referential Voice</span>
+                    <div class="insight-title">Leonardo Writing to Leonardo</div>
+                    <div class="insight-text">Throughout the notebooks, Leonardo addresses himself directly in the second person, in a voice that reads simultaneously as a to-do list and a kind of private reckoning: "Tell me if anything was ever finished," he writes at one point — an observation about his own inability to complete projects that reads, five centuries later, like the most modern thing in the book. Other self-addressed passages include: "Ask Benedetto Portinari how they walk on ice in Flanders." "Find a master of hydraulics and ask him about the locks." "Describe the tongue of a woodpecker." These are not reminders. They are a thinking process written out loud.</div>
+                </div>
+                <div class="notebook-insight-item reveal">
+                    <span class="insight-label">The Fables</span>
+                    <div class="insight-title">Hundreds of Moral Tales, Never Published</div>
+                    <div class="insight-text">Leonardo wrote several hundred fables and moral allegories in his notebooks, drawing on Aesop but departing from him in tone. Many are strange and dark in ways that feel modern. One describes a stone that rolls off a hill to join other stones on the road below, only to find itself crushed under wagon wheels and covered in mud. The stone, looking back at the hilltop where it had rested in "solitary and tranquil peace," regrets leaving. Most scholars read this as autobiographical — the artist who left the quiet of Vinci for the courts of Milan and Rome. The fables were never organized for publication. They were a private mode of thinking.</div>
+                </div>
+                <div class="notebook-insight-item reveal reveal-delay-1">
+                    <span class="insight-label">The Scientific Method — Before Bacon</span>
+                    <div class="insight-title">"He Who Quotes Authorities Does Not Use His Intelligence"</div>
+                    <div class="insight-text">Francis Bacon is credited with formalizing the scientific method in 1620. Leonardo was practicing it, and explicitly describing it, a century earlier. He wrote repeatedly that knowledge must begin with observation, move to theory, and be tested against observation again — and that anyone who relied on the authority of ancient writers rather than direct experience was not doing science. "Whoever in discussion adduces authority uses not intellect but rather memory," he wrote. He had no patience for Aristotle or Galen when they contradicted what he had seen with his own eyes in a dissected body. This was genuinely dangerous in 1490.</div>
+                </div>
+                <div class="notebook-insight-item reveal">
+                    <span class="insight-label">Mathematical Constraint</span>
+                    <div class="insight-title">Getting Calculus-Level Answers Without Calculus</div>
+                    <div class="insight-text">Leonardo had no calculus — Isaac Newton would not develop it until 1666, 147 years after Leonardo's death. He had no symbolic algebra; Viète would not formalize that until the late 16th century. Yet mathematicians who have studied his notebooks note that he was addressing problems that required differential calculus, and arriving at qualitatively correct answers through geometric reasoning alone. His descriptions of fluid vortex dynamics, structural load distribution, and the mathematics of projectile motion are all geometrically derived — and all essentially correct. He was solving 17th-century problems with 15th-century tools, and succeeding.</div>
+                </div>
+                <div class="notebook-insight-item reveal reveal-delay-1">
+                    <span class="insight-label">Observational Speed</span>
+                    <div class="insight-title">Drawing Motion Before Photography Existed</div>
+                    <div class="insight-text">Some of Leonardo's observational sketches — particularly those of horses rearing, water tumbling over a weir, and birds captured at the moment of downstroke — are rougher than his finished studies, but they capture motion with a quickness that suggests he was drawing in real time. No painter before him had attempted to record movement this way. His process appears to have involved extremely rapid gestural sketching followed by analytical annotation — he was studying the same subject his paintings depicted, but as a scientist rather than an artist, trying to understand the mechanics of what he was seeing well enough to reconstruct it exactly.</div>
+                </div>
+            </div>
+
+            <!-- WATER BLOCK -->
+            <div class="water-block reveal">
+                <div class="water-num">72</div>
+                <div class="water-content">
+                    <strong>Pages on Water Alone — The Codex Leicester</strong>
+                    <p>Water was Leonardo's deepest and most sustained scientific obsession. Of his estimated 13,000 notebook pages, the Codex Leicester devotes seventy-two pages to water exclusively — its vortices, its relationship to rock erosion, its role in the formation of continents, the way it carries sediment, the reason rivers meander, and why the sea is lower than the mountains. He proposed that rivers were the Earth's circulatory system — a direct analogy from his anatomical work — and that the movement of water through the landscape was analogous to blood through the body. He described water as "the driver of nature." He estimated that understanding water completely would be equivalent to understanding the whole natural world. The Codex Leicester was purchased by Bill Gates in 1994 for $30.8 million. He digitized it and published the scans online, making Leonardo's handwritten water observations available to every fluid dynamics researcher on Earth simultaneously for the first time.</p>
+                </div>
+            </div>
+
+            <!-- QUESTIONS GRID -->
+            <div class="questions-block">
+                <h3 class="questions-heading reveal">The Lists: Questions Without Answers</h3>
+                <p class="questions-sub reveal">Scattered throughout the notebooks are explicit lists of things Leonardo intended to investigate — questions he posed to himself and never fully answered, some of which were not resolved by anyone until centuries after his death.</p>
+                <div class="questions-grid">
+                    <div class="question-card reveal">
+                        "Describe the tongue of a woodpecker."
+                        <span class="question-status answered">Answered — 20th century ornithology</span>
+                    </div>
+                    <div class="question-card reveal reveal-delay-1">
+                        "Describe why the sky is blue."
+                        <span class="question-status answered">Answered — Rayleigh scattering, 1871</span>
+                    </div>
+                    <div class="question-card reveal reveal-delay-2">
+                        "Find a way to measure the height of a mountain without climbing it."
+                        <span class="question-status answered">Answered — barometric altimetry, 17th century</span>
+                    </div>
+                    <div class="question-card reveal">
+                        "Describe the motion of water when it strikes a flat surface."
+                        <span class="question-status answered">Answered — Navier-Stokes equations, 1822</span>
+                    </div>
+                    <div class="question-card reveal reveal-delay-1">
+                        "Why does the eye see more clearly at night if it looks sideways rather than directly at an object?"
+                        <span class="question-status answered">Answered — rod cell distribution, 19th century</span>
+                    </div>
+                    <div class="question-card reveal reveal-delay-2">
+                        "How does a seed know which way is down when buried in the dark?"
+                        <span class="question-status answered">Answered — gravitropism, plant hormone auxin, 1926</span>
+                    </div>
+                    <div class="question-card reveal">
+                        "What is the nature of memory? Where does it reside in the brain?"
+                        <span class="question-status">Still partially open — neuroscience, present day</span>
+                    </div>
+                    <div class="question-card reveal reveal-delay-1">
+                        "How does a bird know where to fly in winter?"
+                        <span class="question-status answered">Answered — magnetoreception, 20th century</span>
+                    </div>
+                    <div class="question-card reveal reveal-delay-2">
+                        "Can a man swim faster with webbed gloves — like a frog — or without them?"
+                        <span class="question-status answered">Answered — Leonardo himself, via experiment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PERSONAL NOTES -->
+            <div class="personal-notes-block reveal">
+                <div class="personal-notes-heading">The Personal Leonardo — What the Margins Reveal</div>
+                <div class="personal-notes-grid">
+                    <div class="personal-note">
+                        <span class="personal-note-label">Grocery List, Milan, c. 1494</span>
+                        <div class="personal-note-text">"Mushrooms. Bread. Wine. Candles. Vinegar. Salad. Grain for the horse. Four pairs of hose. A cap. Shirts."</div>
+                    </div>
+                    <div class="personal-note">
+                        <span class="personal-note-label">Debt Record, c. 1490</span>
+                        <div class="personal-note-text">"Salai owes me: a cape, two shirts, a cloak, stockings, the belt — in total 20 lire." He records Salai's persistent thefts over decades, apparently without ever dismissing him.</div>
+                    </div>
+                    <div class="personal-note">
+                        <span class="personal-note-label">Self-Admonishment, c. 1508</span>
+                        <div class="personal-note-text">"Tell me if anything was ever finished. Tell me." The note sits beside an unfinished anatomical diagram, interrupting the science with a moment of complete candor.</div>
+                    </div>
+                    <div class="personal-note">
+                        <span class="personal-note-label">On His Mother's Death, c. 1493</span>
+                        <div class="personal-note-text">"Caterina came on the 16th day of July 1493." Leonardo records her arrival and, a few months later, her death and burial expenses — the only emotional record he left of his mother.</div>
+                    </div>
+                    <div class="personal-note">
+                        <span class="personal-note-label">Book Wish List, c. 1496</span>
+                        <div class="personal-note-text">"Get Vitolone's Perspectiva from the Brera. The works of Archimedes from Messer Ottaviano Pallavicino. The book of Giovanni Taverna on the square of the circle."</div>
+                    </div>
+                    <div class="personal-note">
+                        <span class="personal-note-label">Observation on Aging, c. 1510</span>
+                        <div class="personal-note-text">"I thought I was learning how to live; I was only learning how to die." This line sits at the top of a page of anatomical studies of an elderly man Leonardo had dissected — a man who, he recorded, died "sweetly, without any movement or sign of distress."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCIENTIFIC METHOD QUOTE -->
+            <div class="method-quote reveal">
+                <blockquote>
+                    "Those who are enamored of practice without science are like pilots who go into a ship without rudder or compass and never have any certainty of where they are going. Practice should always be based upon a sound knowledge of theory."
+                </blockquote>
+                <cite>— Leonardo da Vinci, Treatise on Painting, c. 1490</cite>
+            </div>
+
+            <!-- LOST PAGES -->
+            <div class="questions-block" style="margin-top: 3rem;">
+                <h3 class="questions-heading reveal">The 6,000 Missing Pages</h3>
+                <p class="questions-sub reveal">Of Leonardo's estimated 13,000 notebook pages, approximately 6,000 are gone. What was lost is partly known — and what it contained may represent the greatest loss in the history of recorded thought.</p>
+            </div>
+            <div class="lost-pages-block">
+                <div class="lost-pages-stat reveal">
+                    <div class="lp-num">1519</div>
+                    <div class="lp-text">
+                        <strong>Bequeathed to Francesco Melzi</strong>
+                        <p>Leonardo left his entire estate of manuscripts, drawings, and instruments to his devoted pupil Francesco Melzi, who treated them as a sacred trust for the rest of his long life. Melzi spent years cataloguing the material and was the last person to see it intact. He died in 1570, fifty-one years after Leonardo. His heirs did not share his reverence.</p>
+                    </div>
+                </div>
+                <div class="lost-pages-stat reveal reveal-delay-1">
+                    <div class="lp-num">1582</div>
+                    <div class="lp-text">
+                        <strong>The Melzi Heirs Sell or Give Away the Manuscripts</strong>
+                        <p>Within a decade of Francesco Melzi's death, his son Orazio — indifferent to their value — gave away bundles of pages to visitors, sold others to the sculptor Pompeo Leoni, and allowed still others to simply disappear. Leoni bound surviving pages into what became the Codex Atlanticus, cutting and rearranging them in the process. An unknown quantity was simply lost during this period — thrown away, mislaid, or destroyed.</p>
+                    </div>
+                </div>
+                <div class="lost-pages-stat reveal">
+                    <div class="lp-num">~6k</div>
+                    <div class="lp-text">
+                        <strong>Estimated Missing Pages — Contents Partially Known</strong>
+                        <p>From references within surviving pages, scholars have established that Leonardo completed drafts of at least three major treatises that are now lost: a comprehensive Treatise on Painting (partially reconstructed by his pupil Francesco Melzi from memory), a completed anatomical atlas covering the full human body, and extensive treatises on water mechanics and on the flight of birds beyond the surviving codex. What else vanished is unknown.</p>
+                    </div>
+                </div>
+                <div class="lost-pages-stat reveal reveal-delay-1">
+                    <div class="lp-num">1994</div>
+                    <div class="lp-text">
+                        <strong>The Codex Leicester — Digital Resurrection</strong>
+                        <p>When Bill Gates acquired the Codex Leicester, he had every page scanned at high resolution and released the images publicly. For the first time, researchers on five continents could study the same Leonardo manuscript simultaneously. Gates also used the pages as screen savers in Windows 95, making Leonardo's handwriting among the most widely seen manuscripts in history — a transmission he could not have imagined, reaching more eyes in a month than in the preceding five centuries combined.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end notebook-deep-section -->
     </div>
 </section>
 
@@ -1688,6 +2416,202 @@
         </div>
     </div>
 </div>
+
+
+<!-- ═══ LAST SUPPER DEEP ANALYSIS ═══════════════════ -->
+<section class="last-supper-section">
+    <div class="container">
+
+        <div class="ls-header">
+            <div>
+                <p class="section-label reveal">Deep Analysis</p>
+                <h2 class="section-title reveal">
+                    The Last<br><em>Supper</em>
+                </h2>
+            </div>
+            <p class="ls-header-desc reveal">
+                The Last Supper is the most analyzed painting in history — and also one of the most misunderstood. Beyond the standard account of perspective and emotion lies a painting full of deliberate subversions, hidden discoveries, structural innovations that broke six centuries of tradition, and a deterioration history that reads like a chronicle of human indifference. What follows is what the standard texts omit.
+            </p>
+        </div>
+
+        <img
+            class="ls-full-image reveal"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg/1280px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg"
+            alt="The Last Supper by Leonardo da Vinci — full high resolution, c. 1495–1498"
+        >
+
+        <!-- COMPOSITIONAL DISCOVERIES -->
+        <div class="ls-discovery-grid">
+            <div class="ls-discovery-item reveal">
+                <span class="ls-discovery-tag">Compositional Choice</span>
+                <div class="ls-discovery-title">The Deliberate Moment — Why Not the Eucharist?</div>
+                <div class="ls-discovery-text">Every major depiction of the Last Supper before Leonardo shows the institution of the Eucharist — Christ raising the bread, or blessing the chalice. That was the expected subject for a refectory painting. A monastic dining hall was specifically the place to contemplate the origin of communion. Leonardo chose instead to depict the announcement of betrayal: "Verily I say unto you, that one of you shall betray me" (John 13:21). This shift transformed the painting from devotional object to psychological drama. The moment of the Eucharist is static, ceremonial, resolved. The moment of the betrayal announcement is explosive — every figure moves, every face registers a different internal state. Leonardo chose the more difficult and more interesting scene, and in doing so, effectively invented narrative painting.</div>
+            </div>
+            <div class="ls-discovery-item reveal reveal-delay-1">
+                <span class="ls-discovery-tag">Vanishing Point</span>
+                <div class="ls-discovery-title">The Eye of God — Perspective Converges on Christ's Temple</div>
+                <div class="ls-discovery-text">Every line in the painted architecture — the ceiling coffers, the tapestries, the window frames — converges on a single vanishing point. In conventional one-point perspective, this point is typically the geometric center of the composition. Leonardo placed it precisely at Christ's right temple. Not his face generally — his right temple specifically. This means that wherever a viewer stands in the refectory of Santa Maria delle Grazie, their gaze is drawn not just toward Christ but toward a specific point on his head. Researchers have confirmed this by tracing nail holes in the plaster where Leonardo anchored strings to lay out the perspective. The precision is intentional and exact, not approximate. No painter before Leonardo had used perspective as a devotional instrument in this way.</div>
+            </div>
+            <div class="ls-discovery-item reveal">
+                <span class="ls-discovery-tag">Architectural Innovation</span>
+                <div class="ls-discovery-title">The Room as Extension — Painted Space Continues Real Space</div>
+                <div class="ls-discovery-text">Leonardo designed the painted room in The Last Supper to appear as a direct continuation of the actual refectory. The painted ceiling beams were aligned with the real ceiling beams of the room. The perspective was calibrated to the height of the original floor (which has since been raised by about a meter, disrupting the effect). When the painting was new, a monk entering the refectory would have experienced the sensation of the dining room extending seamlessly into the painting — as if Christ and his apostles were eating at the far end of the same hall. This was not a symbolic statement. It was an architectural illusion, requiring precise surveying of the room before a single brushstroke was applied.</div>
+            </div>
+            <div class="ls-discovery-item reveal reveal-delay-1">
+                <span class="ls-discovery-tag">Iconographic Revolt</span>
+                <div class="ls-discovery-title">No Halo — The Window as Light</div>
+                <div class="ls-discovery-text">In every major Italian depiction of the Last Supper before 1495 — Taddeo Gaddi's, Andrea del Castagno's, Ghirlandaio's — Christ wears a gold disc halo, the conventional symbol of divinity. Leonardo eliminated it entirely. Instead, he placed Christ precisely in front of the central window, so that the exterior light and the open landscape behind him form a natural luminous aureole. The halo became atmospheric rather than symbolic — light replacing theology. This was a radical act in a painting commissioned for a Dominican monastery. It signaled that divinity was expressed through nature, through light itself, rather than through heraldic convention. Castagno had used this trick tentatively; Leonardo made it the structural centerpiece of the entire composition.</div>
+            </div>
+            <div class="ls-discovery-item reveal">
+                <span class="ls-discovery-tag">Technical Failure by Design</span>
+                <div class="ls-discovery-title">Why He Used Tempera on Dry Plaster — and Why It Mattered</div>
+                <div class="ls-discovery-text">The conventional technique for mural painting was fresco — applying pigment directly to fresh wet plaster, which chemically bonds as it dries. Fresco is permanent. It is also unforgiving: a fresco painter must work fast, section by section, completing each patch before the plaster dries. Leonardo refused this method. He sealed the wall with a double layer of gesso and pitch, then painted in tempera and oil — the same techniques he used on panel paintings. This allowed him to revise, to hesitate, to return to a face after days of thought. The result was a painting of extraordinary psychological subtlety — and one that began flaking within twenty years of completion. The choice reveals his priorities: the painting was more important than its survival.</div>
+            </div>
+            <div class="ls-discovery-item reveal reveal-delay-1">
+                <span class="ls-discovery-tag">Structural Asymmetry</span>
+                <div class="ls-discovery-title">The Symmetry That Isn't — Two Sides, Two States of Being</div>
+                <div class="ls-discovery-text">The composition appears symmetrical — six apostles left, six right, Christ at center. It is not. The left side of the painting (from the viewer's perspective, containing Bartholomew, James the Less, Andrew, Judas, Peter, and John) is more turbulent, more kinetic, more emotionally agitated. The right side (Thomas, James the Greater, Philip, Matthew, Thaddaeus, and Simon) contains figures who are more contained, more contemplative, more resolved. Art historians have identified this as a deliberate Neoplatonic distinction — the active life versus the contemplative life — embedded in the composition. It is invisible until you look for it, and then impossible to unsee. Leonardo had studied Neoplatonic philosophy at the Platonic Academy in Florence under Lorenzo de' Medici. The asymmetry is not accidental.</div>
+            </div>
+            <div class="ls-discovery-item reveal">
+                <span class="ls-discovery-tag">Infrared Discovery</span>
+                <div class="ls-discovery-title">The Pentimenti — What Infrared Reflectography Reveals</div>
+                <div class="ls-discovery-text">Modern infrared reflectography — which penetrates the paint layers and reveals the underdrawing beneath — has shown that Leonardo made substantial compositional changes during execution. Christ's right hand was originally positioned differently. Several apostles' arms were moved significantly from their initial positions. Most strikingly, Judas's left hand — which now appears open on the table — was originally shown reaching for bread, a direct reference to the Gospel passage "he that dippeth his hand with me in the dish, the same shall betray me." Leonardo revised this away, leaving the identification of Judas to subtler means. The pentimenti (changes of mind) reveal a painter thinking through the scene's psychology in real time, revising not for composition but for meaning.</div>
+            </div>
+            <div class="ls-discovery-item reveal reveal-delay-1">
+                <span class="ls-discovery-tag">Scale Deception</span>
+                <div class="ls-discovery-title">The Figures Are Giants — A Deliberate Distortion</div>
+                <div class="ls-discovery-text">If the painted figures were to stand up inside the painted room, they would be approximately three meters tall — giants relative to the architectural space Leonardo depicted. He deliberately painted the figures at a scale that violates the perspective of the room itself. This was a calculated decision: from the viewing distance of the refectory floor, the exaggerated scale of the figures maintains their legibility and emotional presence. A correctly scaled figure would read as a small, distant form. Leonardo wanted faces that could be read across the room, expressions that could function at thirty feet. He understood that the purpose of the painting was not photographic accuracy but communicative force — and he distorted scale accordingly, trusting that no viewer would notice because no viewer would stand inside the painting.</div>
+            </div>
+        </div>
+
+        <!-- BANDELLO QUOTE -->
+        <div class="ls-pull-quote reveal">
+            "Leonardo would sometimes come early in the morning and stand before the painting for an hour or two, considering and examining it to himself without touching it. Then he would leave and return the next day and spend a similar time simply looking. Other times he would arrive in the middle of the day, pick up his brush, give a few strokes, and leave immediately. At other times he would work from dawn until dusk without eating — and then abruptly stop and not return for days."
+            <cite>— Matteo Bandello, Dominican Friar at Santa Maria delle Grazie, c. 1497</cite>
+        </div>
+
+        <!-- JUDAS REDESIGNED -->
+        <div style="margin-bottom: 5rem;">
+            <h3 class="ls-section-title reveal">Judas Reconsidered — Breaking Six Centuries of Tradition</h3>
+            <p class="ls-section-sub reveal">Every major Last Supper painted before Leonardo placed Judas alone, on the opposite side of the table from the other apostles, facing the viewer directly. The traitor was visually isolated, immediately identifiable, his guilt declared by his position. Leonardo abolished this convention entirely — and replaced it with something far more psychologically sophisticated.</p>
+
+            <div class="notebook-insight-grid">
+                <div class="notebook-insight-item reveal">
+                    <span class="insight-label">The Position</span>
+                    <div class="insight-title">Same Side as the Apostles</div>
+                    <div class="insight-text">Leonardo placed Judas among the apostles, on the same side of the table as everyone else. This was a compositional revolution — and a theological statement. Judas is not other. He is one of us. His betrayal is the more terrible for being committed from within the group rather than from outside it. Leonardo trusted the viewer to find Judas through psychological reading rather than spatial convention, which placed a new demand on the audience: to look, rather than to simply recognize a symbol they had been pre-assigned.</div>
+                </div>
+                <div class="notebook-insight-item reveal reveal-delay-1">
+                    <span class="insight-label">The Shadow</span>
+                    <div class="insight-title">The Only Figure in Darkness</div>
+                    <div class="insight-text">Every figure in the painting is lit from the left, from the real windows of the refectory wall. Judas alone is painted to appear in relative shadow — his face turned slightly away from the light, the shadow falling across his features with a deliberateness that is compositional rather than natural. In a painting where the window behind Christ is the primary light source and every other apostle's face catches that light, Judas's partial darkness reads as a moral condition, not a physical one. Leonardo used illumination as character.</div>
+                </div>
+                <div class="notebook-insight-item reveal">
+                    <span class="insight-label">The Recoil</span>
+                    <div class="insight-title">The Body's Confession</div>
+                    <div class="insight-text">At the moment of Christ's announcement, Judas leans back from the table — the only figure whose movement is away from Christ rather than toward him. This physical recoil is Leonardo's psychological masterstroke. Guilt manifests in the body before the face can compose itself. Judas's posture confesses what his expression tries to conceal. Leonardo understood that the body is a less disciplined liar than the face, and he used that understanding to identify the traitor through movement rather than expression.</div>
+                </div>
+                <div class="notebook-insight-item reveal reveal-delay-1">
+                    <span class="insight-label">The Salt &amp; The Purse</span>
+                    <div class="insight-title">Symbols Hidden in Plain Sight</div>
+                    <div class="insight-text">Judas's arm, in its recoiling motion, knocks over a salt cellar on the table. In Roman tradition, salt was a symbol of friendship and contract — the word "salary" derives from the Latin for salt paid to soldiers. Spilling salt meant breaking faith. Simultaneously, Judas's right hand clutches a small purse — the thirty pieces of silver he has already received or will receive. These symbols are not invented by Leonardo; they come from scripture and tradition. What is his is the decision to embed them in the physical chaos of the moment rather than present them didactically. You discover them; they are not announced.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- APOSTLE PSYCHOLOGY -->
+        <div style="margin-bottom: 5rem;">
+            <h3 class="ls-section-title reveal">The Apostle Psychology — Four Groups, Twelve Inner States</h3>
+            <p class="ls-section-sub reveal">Leonardo organized the apostles into four groups of three — a compositional structure that mirrors both the layout of a table and the groupings described in the Gospels. Each group registers a distinct collective emotional response to Christ's announcement. Each individual within the group registers a further, private response. The painting contains twelve fully individuated psychological portraits — something no painting in history had attempted.</p>
+
+            <div class="ls-apostle-grid">
+                <div class="ls-apostle-group reveal">
+                    <div class="ls-group-position">Far Left — Group One</div>
+                    <div class="ls-group-names">Bartholomew<br>James the Less<br>Andrew</div>
+                    <span class="ls-group-emotion">Shock &amp; Alarm</span>
+                    <div class="ls-group-desc">Bartholomew, at the far left, plants both hands on the table and rises slightly — a figure caught between sitting and standing, between composure and action. James the Less leans toward Peter, sharing whatever information he has just received or guessed. Andrew, hands raised in the classic gesture of "I want no part of this," is the painting's most explicit expression of horrified innocence — the posture of someone who needs the accusation to be wrong. This group has heard the announcement and is processing it physically, through the body, before the mind has caught up.</div>
+                </div>
+                <div class="ls-apostle-group reveal reveal-delay-1">
+                    <div class="ls-group-position">Center Left — Group Two</div>
+                    <div class="ls-group-names">Judas · Peter · John</div>
+                    <span class="ls-group-emotion">Guilt · Fury · Collapse</span>
+                    <div class="ls-group-desc">This is the compositional and dramatic heart of the painting. Judas recoils in shadow, his guilt expressed through his body's withdrawal. Peter has seized a knife — the same knife he will use in Gethsemane to cut off Malchus's ear — and leans across Judas to whisper urgently to John. Whether Peter is asking John to ask Christ who the traitor is (as the Gospel of John describes) or is already planning violence is deliberately ambiguous. John, traditionally depicted as the youngest apostle and always shown beardless, has collapsed in anguish — his face pale, his hands open and passive. The young John's feminized features became the basis for Dan Brown's "Mary Magdalene" conspiracy, but Leonardo was following a 200-year tradition of depicting John this way in Italian art.</div>
+                </div>
+                <div class="ls-apostle-group reveal">
+                    <div class="ls-group-position">Center Right — Group Three</div>
+                    <div class="ls-group-names">Thomas · James the Greater · Philip</div>
+                    <span class="ls-group-emotion">Incredulity · Outrage · Pleading</span>
+                    <div class="ls-group-desc">Thomas raises a single finger toward the ceiling — the same gesture of rational challenge he will make when he demands to touch Christ's wounds after the Resurrection. Even here, Thomas doubts. James the Greater throws his arms wide in a gesture of open outrage — the body's version of "How could this be?" Philip, by contrast, presses his hands to his chest and leans toward Christ with a face of intense pleading: "Is it I, Lord?" Philip's gesture is one of the most psychologically acute in the painting — a man who needs to be told it is not him, who is almost afraid to ask. Leonardo gave each of the twelve a gesture that was consistent with their character as known from scripture — not as decoration, but as a coherent psychological system.</div>
+                </div>
+                <div class="ls-apostle-group reveal reveal-delay-1">
+                    <div class="ls-group-position">Far Right — Group Four</div>
+                    <div class="ls-group-names">Matthew · Thaddaeus · Simon</div>
+                    <span class="ls-group-emotion">Disbelief · Argument · Resignation</span>
+                    <div class="ls-group-desc">Matthew and Thaddaeus both gesture toward Christ while turning to Simon — they are mid-conversation about what has just been said, processing the announcement through dialogue rather than through direct physical response. Simon, the eldest of the apostles, sits at the far right with his hands spread on the table in a gesture of formal finality — as if he is trying to establish order in the middle of chaos, or as if he has simply accepted what is about to happen. This right-side group represents the contemplative response: thought before action, reason before emotion. They are the counterweight to the physical agitation of the left side. The composition holds these two temperaments in balance — which is, ultimately, what good narrative painting does.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HIDDEN MUSIC -->
+        <div class="notebook-insight-grid" style="margin-bottom: 5rem;">
+            <div class="notebook-insight-item reveal">
+                <span class="insight-label">Musical Discovery · 2007</span>
+                <div class="insight-title">The Music Hidden in the Bread and Hands</div>
+                <div class="insight-text">In 2007, Italian musician and researcher Giovanni Maria Pala announced a discovery that had been hiding in the painting for five centuries. Reading the positions of the apostles' hands and the loaves of bread on the table as musical notes — from right to left, in the direction of Leonardo's mirror writing — and placing them on a musical staff, he obtained a coherent 40-second musical composition. Played on an organ at a tempo suitable for a requiem or sacred choral piece, it produces a musically structured phrase rather than random noise. Pala published the score and a recording. Whether Leonardo embedded this intentionally or whether it is a case of pattern recognition finding structure in coincidence has never been definitively resolved. What is certain is that Leonardo was a trained musician — he played the lira da braccio and composed — and that the coincidence, if it is one, is extraordinarily precise.</div>
+            </div>
+            <div class="notebook-insight-item reveal reveal-delay-1">
+                <span class="insight-label">Food Archaeology</span>
+                <div class="insight-title">What's Actually on the Table</div>
+                <div class="insight-text">Food historian John Varriano conducted a detailed analysis of the food depicted on the table in The Last Supper and found several remarkable details. The bread loaves are clearly leavened — risen bread, not the unleavened matzoh that Passover law requires. This is either an anachronism (Leonardo was painting a 15th-century Italian table, not a Seder), a deliberate theological statement about the new covenant replacing the old, or simply a painter's truthfulness about what he observed in Milanese refectories. More intriguingly, the dish that Judas and Christ both reach toward appears to contain eel garnished with orange slices — a specific Milanese delicacy of the period. The Italian word for eel, "anguilla," was also slang for someone who took the bait of heresy. Whether Leonardo made this choice deliberately is unknown. He was the kind of painter for whom it seems impossible that it was accidental.</div>
+            </div>
+            <div class="notebook-insight-item reveal">
+                <span class="insight-label">Acoustic Study</span>
+                <div class="insight-title">The Painting and the Room's Sound</div>
+                <div class="insight-text">Researchers from the Politecnico di Milano studied the acoustic properties of the refectory of Santa Maria delle Grazie in relation to the composition of The Last Supper. They found evidence suggesting that Leonardo may have factored the actual acoustic behavior of the hall into his grouping of the figures — specifically, that the way sound carries from the refectory's entrance toward the far wall where the painting sits corresponds to how the four groups of apostles are arranged spatially. The study remains contested. What is not contested is that Leonardo thought about space holistically — the painting, the architecture, the viewer's position, and the experience of being in the room were all part of a single design problem for him.</div>
+            </div>
+            <div class="notebook-insight-item reveal reveal-delay-1">
+                <span class="insight-label">Leonardo's Working Habit</span>
+                <div class="insight-title">Painting in Bursts of Paralysis and Fury</div>
+                <div class="insight-text">Matteo Bandello, a Dominican friar at Santa Maria delle Grazie who witnessed Leonardo working on The Last Supper, left one of the most vivid eyewitness accounts of any Renaissance artist at work. He describes Leonardo arriving at dawn, climbing the scaffolding, adding a single brushstroke to a single figure, and then standing motionless before the painting for two hours before climbing down and leaving without speaking. On other days, Bandello reports, he would paint continuously from morning until dusk without eating, so absorbed that he forgot entirely to take food. When Ludovico Sforza, under pressure from the prior of the monastery to have the painting finished, asked Leonardo why he was so slow, Leonardo replied that men of genius sometimes accomplish most when they appear to be working least — and that the greatest difficulty was finding a face worthy of being Judas. He had been observing criminals in the Borghetto quarter of Milan for that purpose. He suggested, if he could find no better model, that he might use the prior's own face instead.</div>
+            </div>
+        </div>
+
+        <!-- DETERIORATION TIMELINE -->
+        <div>
+            <h3 class="ls-section-title reveal">Five Centuries of Damage — The Deterioration Timeline</h3>
+            <p class="ls-section-sub reveal">Leonardo's choice of tempera on dry plaster — rather than true fresco — began failing within twenty years of completion. What followed was a sequence of damage, neglect, misguided restoration, and outright vandalism that makes the survival of any legible image at all a minor miracle.</p>
+
+            <div class="ls-deterioration-grid">
+                <div class="ls-det-item reveal">
+                    <div class="ls-det-year">1517</div>
+                    <div class="ls-det-event">First Reports of Flaking</div>
+                    <div class="ls-det-detail">Cardinal Luigi d'Aragona's secretary records that the painting is "beginning to be spoiled." Leonardo has been dead for less than two years. The Milan humidity is already separating the tempera from the gesso layer he applied to seal the wall.</div>
+                </div>
+                <div class="ls-det-item reveal reveal-delay-1">
+                    <div class="ls-det-year">1652</div>
+                    <div class="ls-det-event">The Monks Cut a Door</div>
+                    <div class="ls-det-detail">The Dominican friars at Santa Maria delle Grazie cut a doorway through the lower-center section of the wall to provide a more convenient passage between the kitchen and the refectory. The door was placed directly through the lower portion of the painting, destroying the depiction of Christ's feet and the lower section of the table. It has since been bricked up, but the damage is permanent and irreversible.</div>
+                </div>
+                <div class="ls-det-item reveal">
+                    <div class="ls-det-year">1796</div>
+                    <div class="ls-det-event">Napoleon's Troops Use the Room as a Stable</div>
+                    <div class="ls-det-detail">After Napoleon's army occupied Milan, French troops used the refectory as a stable and a storage depot for hay. They reportedly threw stones at the figures for entertainment. The painting survived — barely. Napoleon himself reportedly visited and ordered the room protected, but his orders were not consistently enforced by his officers in the field.</div>
+                </div>
+                <div class="ls-det-item reveal reveal-delay-1">
+                    <div class="ls-det-year">1943</div>
+                    <div class="ls-det-event">Allied Bombing Destroys the Refectory</div>
+                    <div class="ls-det-detail">During the Allied bombing of Milan in August 1943, a bomb destroyed the roof and three walls of the refectory. The painting wall alone was left standing, exposed to rain and open air for three years. Italian art officials had sandbagged the lower portion and covered it in protective padding before the bombing, which is the primary reason the painting survived the blast. It stood in the open air through 1945.</div>
+                </div>
+                <div class="ls-det-item reveal">
+                    <div class="ls-det-year">1978–1999</div>
+                    <div class="ls-det-event">The 21-Year Restoration</div>
+                    <div class="ls-det-detail">Conservator Pinin Brambilla Barcilon undertook the most painstaking restoration in art history — twenty-one years of microscopic work, removing layer upon layer of previous restoration attempts, stabilizing what remained of Leonardo's original paint, and using documentation and technical imaging to understand what was original. She found that less than half of what was visible was Leonardo's actual paint. The rest was centuries of overpainting by restorers who were also guessing. The result is now what visitors see: a painting that is approximately 40–50% original Leonardo, the rest stabilized shadow.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 
 <!-- ═══ ANATOMY & DRAWINGS ════════════════════════════ -->
