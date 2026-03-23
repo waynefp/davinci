@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An exhaustive exploration of Leonardo da Vinci — his notebooks, paintings, anatomical drawings, experiments, and the profound reach of his genius into the modern world.">
+    <title>Leonardo da Vinci — The Perpetual Genius</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg:           #faf9f7;
+            --bg-warm:      #f2ece3;
+            --bg-warm-2:    #ede6da;
+            --surface:      #ffffff;
+            --border:       #e5ddd2;
+            --border-2:     #d6cbbc;
+            --text:         #1c1a17;
+            --text-2:       #5c5040;
+            --text-3:       #9a8e7f;
+            --accent:       #b57719;
+            --accent-2:     #d4911f;
+            --accent-bg:    #f7ead6;
+            --accent-dark:  #8a5a12;
+            --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-2:       cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', system-ui, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ── NAVIGATION ─────────────────────────────── */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 3.5rem;
+            background: rgba(250, 249, 247, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+        }
+
+        nav.scrolled {
+            border-color: var(--border);
+            box-shadow: 0 4px 28px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-2);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.25s var(--ease);
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s var(--ease);
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
+        .nav-links a.active { color: var(--accent); }
+
+        /* ── HERO ────────────────────────────────────── */
+
+        .hero {
+            min-height: 100dvh;
+            display: grid;
+            grid-template-columns: 55fr 45fr;
+            padding-top: 5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 4rem 5rem 6rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 2.5rem;
+            height: 1px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .hero-eyebrow-text {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.25rem, 5.5vw, 5.75rem);
+            font-weight: 700;
+            line-height: 1.03;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 2.25rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-desc {
+            font-size: 1.0625rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            max-width: 50ch;
+            margin-bottom: 3rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--surface);
+            background: var(--text);
+            padding: 0.875rem 1.75rem;
+            border-radius: 2px;
+            letter-spacing: 0.04em;
+            transition: background 0.25s var(--ease), transform 0.2s var(--ease);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px) scale(0.99);
+        }
+
+        .btn-primary svg {
+            transition: transform 0.25s var(--ease);
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(3px);
+        }
+
+        .btn-ghost {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-2);
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-2);
+            padding-bottom: 2px;
+            transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+
+        .btn-ghost:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .hero-image-side {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-side::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, var(--bg) 0%, transparent 30%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-image-side::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, var(--bg), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-portrait {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 10%;
+            filter: sepia(18%) contrast(108%) brightness(1.02);
+            transition: transform 8s ease;
+        }
+
+        .hero:hover .hero-portrait {
+            transform: scale(1.02);
+        }
+
+        .hero-scroll-cue {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 6rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            z-index: 3;
+        }
+
+        .scroll-track {
+            width: 1px;
+            height: 3rem;
+            background: var(--border-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-runner {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            animation: scrollDown 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollDown {
+            0%   { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        /* ── STATS BAR ───────────────────────────────── */
+
+        .stats-bar {
+            background: var(--text);
+            padding: 2.5rem 6rem;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.375rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 2.5rem;
+            width: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.125rem;
+            font-weight: 700;
+            color: var(--accent-2);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ── LAYOUT PRIMITIVES ───────────────────────── */
+
+        section {
+            padding: 7.5rem 0;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 5rem;
+        }
+
+        .section-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.25rem, 3.5vw, 3.75rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .section-desc {
+            font-size: 1.0625rem;
+            color: var(--text-2);
+            line-height: 1.78;
+            max-width: 62ch;
+        }
+
+        /* ── INTRO / BIOGRAPHY ───────────────────────── */
+
+        .intro-section {
+            background: var(--bg-warm);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 6rem 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .pull-quote-wrap {
+            position: sticky;
+            top: 7rem;
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.375rem, 2vw, 1.875rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--text);
+            padding-left: 1.75rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.25rem;
+            font-size: 0.8125rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+        }
+
+        .born-badge {
+            margin-top: 2.5rem;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 1rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+        }
+
+        .born-badge-label {
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-3);
+        }
+
+        .born-badge-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .intro-bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .bio-item {
+            padding: 2rem 2rem 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bio-item:nth-child(even) {
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .bio-item h3 {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 0.75rem;
+        }
+
+        .bio-item p {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.75;
+        }
+
+        /* ── NOTEBOOKS ───────────────────────────────── */
+
+        .notebooks-section {
+            background: var(--surface);
+        }
+
+        .notebooks-layout {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 6rem;
+            align-items: start;
+            margin-top: 4.5rem;
+        }
+
+        .notebook-image-stack {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .notebook-main-img {
+            width: 100%;
+            border-radius: 3px;
+            box-shadow: 0 24px 64px -16px rgba(0,0,0,0.18);
+            filter: sepia(12%) contrast(108%);
+        }
+
+        .notebook-accent-img {
+            position: absolute;
+            bottom: -2.5rem;
+            right: -2.5rem;
+            width: 58%;
+            border-radius: 3px;
+            border: 6px solid var(--surface);
+            box-shadow: 0 16px 48px -10px rgba(0,0,0,0.22);
+            filter: sepia(12%) contrast(108%);
+        }
+
+        .notebooks-content {
+            padding-top: 0.5rem;
+        }
+
+        .codex-list {
+            margin-top: 2.75rem;
+            display: grid;
+            gap: 0;
+        }
+
+        .codex-item {
+            padding: 1.625rem 1.5rem;
+            border-left: 2px solid var(--border);
+            transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+            cursor: default;
+        }
+
+        .codex-item + .codex-item {
+            margin-top: 0.5rem;
+        }
+
+        .codex-item:hover {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+            padding-left: 1.75rem;
+        }
+
+        .codex-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .codex-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.7;
+        }
+
+        .mirror-note {
+            margin-top: 2.5rem;
+            padding: 1.5rem 1.75rem;
+            background: var(--text);
+            border-radius: 3px;
+        }
+
+        .mirror-note p {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.7;
+        }
+
+        .mirror-note strong {
+            color: var(--accent-2);
+            font-weight: 600;
+        }
+
+        .pages-note {
+            margin-top: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-warm);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.65;
+        }
+
+        /* ── PAINTINGS ───────────────────────────────── */
+
+        .paintings-section {
+            background: var(--bg);
+        }
+
+        .paintings-header {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 5rem;
+            align-items: end;
+            margin-bottom: 4rem;
+        }
+
+        .sfumato-note {
+            padding: 1.25rem 1.5rem;
+            background: var(--accent-bg);
+            border-left: 2px solid var(--accent);
+            border-radius: 0 3px 3px 0;
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            margin-top: 1.75rem;
+        }
+
+        .sfumato-note strong {
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+
+        .painting-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1.1fr 1.1fr;
+            grid-template-rows: 320px 310px;
+            gap: 1rem;
+        }
+
+        .painting-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+            cursor: pointer;
+            background: var(--bg-warm);
+        }
+
+        .painting-card--large {
+            grid-row: 1 / 3;
+        }
+
+        .painting-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.7s var(--ease), filter 0.45s var(--ease);
+        }
+
+        .painting-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.8);
+        }
+
+        .painting-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(28,26,23,0.92) 0%, rgba(28,26,23,0.3) 50%, transparent 80%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.75rem;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease);
+        }
+
+        .painting-card:hover .painting-overlay {
+            opacity: 1;
+        }
+
+        .painting-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .painting-overlay .year {
+            font-size: 0.6875rem;
+            color: var(--accent-2);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        .painting-overlay p {
+            font-size: 0.8125rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.6;
+        }
+
+        .painting-overlay .technique-tag {
+            margin-top: 0.875rem;
+            display: inline-block;
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            border: 1px solid rgba(212,145,31,0.4);
+            border-radius: 1px;
+            padding: 0.25rem 0.625rem;
+        }
+
+        /* ── SFUMATO ANALYSIS STRIP ──────────────────── */
+
+        .sfumato-strip {
+            background: var(--bg-warm);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 5rem 0;
+        }
+
+        .sfumato-analysis {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .sfumato-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.875rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.875rem;
+        }
+
+        .sfumato-col p {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.75;
+        }
+
+        .sfumato-col .technique-name {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* ── ANATOMY & DRAWINGS ──────────────────────── */
+
+        .anatomy-section {
+            background: var(--text);
+        }
+
+        .anatomy-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .anatomy-section .section-label {
+            color: var(--accent-2);
+        }
+
+        .anatomy-section .section-title {
+            color: white;
+            margin-top: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .anatomy-section .section-desc {
+            color: rgba(255,255,255,0.58);
+        }
+
+        .anatomy-facts {
+            margin-top: 2.75rem;
+            display: grid;
+            gap: 0;
+        }
+
+        .anatomy-fact {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .anatomy-fact:last-child {
+            border-bottom: none;
+        }
+
+        .fact-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-2);
+            line-height: 1;
+            flex-shrink: 0;
+            min-width: 3.5rem;
+            padding-top: 0.125rem;
+        }
+
+        .fact-text strong {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0.375rem;
+            letter-spacing: 0.02em;
+        }
+
+        .fact-text p {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.52);
+            line-height: 1.7;
+        }
+
+        .anatomy-images {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 0.875rem;
+        }
+
+        .anatomy-images img {
+            width: 100%;
+            border-radius: 3px;
+            filter: sepia(15%) contrast(110%);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+        }
+
+        .anatomy-images .anatomy-img-secondary {
+            align-self: center;
+        }
+
+        /* ── INVENTIONS ──────────────────────────────── */
+
+        .inventions-section {
+            background: var(--bg-warm);
+        }
+
+        .inventions-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            align-items: end;
+            margin-bottom: 4rem;
+        }
+
+        .inventions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .invention-card {
+            background: var(--surface);
+            padding: 2.25rem;
+            transition: background 0.3s var(--ease);
+            position: relative;
+        }
+
+        .invention-card:hover {
+            background: var(--accent-bg);
+        }
+
+        .invention-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            background: var(--bg-warm);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.375rem;
+            transition: background 0.3s var(--ease);
+        }
+
+        .invention-card:hover .invention-icon {
+            background: rgba(181,119,25,0.15);
+        }
+
+        .invention-icon svg {
+            width: 1.375rem;
+            height: 1.375rem;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .invention-year {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .invention-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1875rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.625rem;
+            line-height: 1.25;
+        }
+
+        .invention-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        .invention-verified {
+            margin-top: 1rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .invention-verified::before {
+            content: '';
+            display: block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: #6aab6a;
+            flex-shrink: 0;
+        }
+
+        /* ── MODERN LEGACY ───────────────────────────── */
+
+        .legacy-section {
+            background: var(--surface);
+        }
+
+        .legacy-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: end;
+            margin-bottom: 4.5rem;
+        }
+
+        .legacy-table {
+            border-top: 1px solid var(--border);
+        }
+
+        .legacy-table-head {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--border-2);
+            padding-bottom: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        .legacy-col-title {
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            padding: 1rem 2rem 1rem 0;
+        }
+
+        .legacy-col-title:last-child {
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .legacy-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s var(--ease);
+        }
+
+        .legacy-row:hover {
+            background: var(--bg);
+        }
+
+        .legacy-then,
+        .legacy-now {
+            padding: 2.25rem 2rem 2.25rem 0;
+        }
+
+        .legacy-now {
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .legacy-item-era {
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .legacy-then .legacy-item-era {
+            color: var(--text-3);
+        }
+
+        .legacy-now .legacy-item-era {
+            color: var(--accent);
+        }
+
+        .legacy-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.625rem;
+            line-height: 1.25;
+        }
+
+        .legacy-now .legacy-item-title {
+            color: var(--accent-dark);
+        }
+
+        .legacy-item-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        /* ── TIMELINE ────────────────────────────────── */
+
+        .timeline-section {
+            background: var(--bg);
+        }
+
+        .timeline-header {
+            margin-bottom: 5rem;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 50%;
+        }
+
+        .timeline-spine {
+            position: absolute;
+            left: calc(50% - 1px);
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-spine-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--accent);
+            transition: height 1.4s var(--ease-2);
+        }
+
+        .timeline-event {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+            margin-bottom: 3.5rem;
+            position: relative;
+            left: -50%;
+            width: 200%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0.5rem;
+            transform: translateX(-50%);
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 2px var(--accent);
+            transition: transform 0.3s var(--ease);
+        }
+
+        .timeline-event:hover .timeline-dot {
+            transform: translateX(-50%) scale(1.5);
+        }
+
+        .timeline-left {
+            text-align: right;
+            padding-right: 2.75rem;
+        }
+
+        .timeline-right {
+            padding-left: 2.75rem;
+        }
+
+        .t-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.375rem;
+        }
+
+        .t-event {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.375rem;
+        }
+
+        .t-detail {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            line-height: 1.7;
+        }
+
+        .t-type-tag {
+            display: inline-block;
+            font-size: 0.5625rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent-bg);
+            background: var(--accent-bg);
+            border-radius: 1px;
+            padding: 0.2rem 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── CLOSING QUOTE ───────────────────────────── */
+
+        .closing-section {
+            background: var(--text);
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .closing-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 3.5vw, 3rem);
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.45;
+            max-width: 28ch;
+            margin: 0 auto 1.75rem;
+        }
+
+        .closing-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 0.8125rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-2);
+            letter-spacing: 0.1em;
+        }
+
+        .closing-sub {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.06em;
+            margin-top: 3rem;
+        }
+
+        /* ── FOOTER ──────────────────────────────────── */
+
+        footer {
+            background: #141210;
+            padding: 2.5rem 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.12em;
+        }
+
+        .footer-center {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .footer-right {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            text-align: right;
+        }
+
+        /* ── SCROLL REVEAL ANIMATIONS ────────────────── */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-32px);
+            transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(32px);
+            transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+
+        @media (max-width: 1200px) {
+            .container { padding: 0 3rem; }
+            nav { padding: 1.25rem 3rem; }
+            .hero-content { padding: 4rem 3rem 4rem 4rem; }
+            .stats-bar { padding: 2.25rem 3rem; }
+            .intro-grid { gap: 4rem; }
+            .notebooks-layout { gap: 4rem; }
+            .inventions-header { gap: 3rem; }
+            footer { padding: 2.5rem 3rem; }
+        }
+
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-image-side { display: none; }
+            .hero-content { padding: 4rem 3rem; max-width: 720px; }
+
+            .stats-bar { grid-template-columns: repeat(3, 1fr); }
+            .stat-item:nth-child(3)::after { display: none; }
+
+            .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .pull-quote-wrap { position: static; }
+            .intro-bio-grid { grid-template-columns: 1fr 1fr; }
+
+            .notebooks-layout { grid-template-columns: 1fr; }
+            .notebook-accent-img { display: none; }
+
+            .paintings-header { grid-template-columns: 1fr; gap: 2rem; }
+            .painting-gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .painting-card--large { grid-row: auto; }
+            .painting-card img { height: 280px; }
+
+            .sfumato-analysis { grid-template-columns: 1fr 1fr; }
+
+            .anatomy-layout { grid-template-columns: 1fr; gap: 4rem; }
+
+            .inventions-header { grid-template-columns: 1fr; gap: 2rem; }
+            .inventions-grid { grid-template-columns: 1fr 1fr; }
+
+            .legacy-header { grid-template-columns: 1fr; gap: 2rem; }
+
+            .timeline-container { padding-left: 0; }
+            .timeline-spine { left: 1.5rem; }
+            .timeline-event {
+                display: block;
+                left: 0;
+                width: 100%;
+                padding-left: 3.5rem;
+                position: relative;
+            }
+            .timeline-dot {
+                left: 1.5rem;
+                top: 0.375rem;
+                transform: none;
+            }
+            .timeline-event:hover .timeline-dot {
+                transform: scale(1.5);
+            }
+            .timeline-left {
+                text-align: left;
+                padding-right: 0;
+                padding-bottom: 0.75rem;
+            }
+            .timeline-right { padding-left: 0; }
+            .timeline-spine { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 5rem 0; }
+            .container { padding: 0 1.5rem; }
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+
+            .hero-content { padding: 3rem 1.5rem; }
+            .hero-scroll-cue { left: 1.5rem; }
+            .hero-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+            .stats-bar { padding: 2rem 1.5rem; grid-template-columns: 1fr 1fr; }
+            .stat-item:nth-child(5) { grid-column: 1 / -1; }
+            .stat-item::after { display: none; }
+
+            .intro-bio-grid { grid-template-columns: 1fr; }
+            .bio-item:nth-child(even) { padding-left: 0; border-left: none; }
+
+            .painting-gallery { grid-template-columns: 1fr; }
+            .painting-card img { height: 320px; }
+            .painting-overlay { opacity: 1; }
+
+            .sfumato-analysis { grid-template-columns: 1fr; }
+            .anatomy-images { grid-template-columns: 1fr; }
+
+            .inventions-grid { grid-template-columns: 1fr; }
+
+            .legacy-row { grid-template-columns: 1fr; }
+            .legacy-now {
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+            .legacy-table-head { display: none; }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 1.5rem;
+            }
+            .footer-right { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ════════════════════════════════════ -->
+<nav id="main-nav">
+    <span class="nav-logo">Da Vinci</span>
+    <ul class="nav-links">
+        <li><a href="#notebooks">Notebooks</a></li>
+        <li><a href="#paintings">Paintings</a></li>
+        <li><a href="#anatomy">Anatomy</a></li>
+        <li><a href="#inventions">Inventions</a></li>
+        <li><a href="#legacy">Legacy</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+    </ul>
+</nav>
+
+
+<!-- ═══ HERO ══════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <span class="hero-eyebrow-text">Born Vinci, Tuscany · April 15, 1452</span>
+        </div>
+        <h1 class="hero-title">
+            The mind<br>
+            that saw<br>
+            <em>tomorrow.</em>
+        </h1>
+        <p class="hero-desc">
+            Painter. Anatomist. Engineer. Philosopher. Musician. In a single lifetime, Leonardo da Vinci produced work that still defines the frontier of human capability — five centuries before the disciplines he mastered became organized fields of study.
+        </p>
+        <div class="hero-actions">
+            <a href="#notebooks" class="btn-primary">
+                Explore the Legacy
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="#timeline" class="btn-ghost">View Timeline</a>
+        </div>
+    </div>
+    <div class="hero-image-side">
+        <img
+            class="hero-portrait"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Leonardo_self_portrait.jpg/800px-Leonardo_self_portrait.jpg"
+            alt="Leonardo da Vinci — self-portrait in red chalk, c. 1512"
+        >
+    </div>
+    <div class="hero-scroll-cue">
+        <div class="scroll-track"><div class="scroll-runner"></div></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+
+<!-- ═══ STATS BAR ═════════════════════════════════════ -->
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-num">67</span>
+        <span class="stat-label">Years of Life</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">7,000+</span>
+        <span class="stat-label">Notebook Pages Surviving</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">20</span>
+        <span class="stat-label">Paintings Attributed</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Human Bodies Dissected</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-num">400+</span>
+        <span class="stat-label">Invention Designs Drawn</span>
+    </div>
+</div>
+
+
+<!-- ═══ INTRODUCTION / BIOGRAPHY ══════════════════════ -->
+<section class="intro-section">
+    <div class="container">
+        <div class="intro-grid">
+            <div class="pull-quote-wrap">
+                <blockquote class="pull-quote reveal">
+                    "Learning never exhausts the mind."
+                    <cite>— Leonardo da Vinci</cite>
+                </blockquote>
+                <div class="born-badge reveal reveal-delay-1">
+                    <span class="born-badge-label">Born</span>
+                    <span class="born-badge-date">April 15, 1452 · Vinci, Tuscany</span>
+                    <span class="born-badge-label" style="margin-top: 0.5rem;">Died</span>
+                    <span class="born-badge-date">May 2, 1519 · Amboise, France</span>
+                </div>
+            </div>
+            <div class="intro-bio-grid">
+                <div class="bio-item reveal">
+                    <h3>Origins</h3>
+                    <p>Born illegitimately on April 15, 1452, in the village of Vinci near Florence, Leonardo was the natural son of notary Ser Piero da Vinci and a peasant woman named Caterina. Raised in his paternal household, his outsider status freed him from guild traditions and professional orthodoxy, allowing his mind to range without boundary across every discipline it encountered.</p>
+                </div>
+                <div class="bio-item reveal reveal-delay-1">
+                    <h3>The Apprentice</h3>
+                    <p>At fourteen, Leonardo entered the workshop of Andrea del Verrocchio in Florence — the finest studio in Renaissance Italy. Within years the student had surpassed the master. According to Vasari, when Verrocchio saw Leonardo's luminous angel in their collaborative "Baptism of Christ," he put down his brush and never painted again. The anecdote captures a pattern Leonardo would repeat throughout his life.</p>
+                </div>
+                <div class="bio-item reveal reveal-delay-2">
+                    <h3>Patron & Polymath</h3>
+                    <p>From Milan to Rome to France, Leonardo served under powerful rulers — Ludovico Sforza, Cesare Borgia, Pope Leo X, and finally King Francis I of France. Yet he remained fundamentally ungovernable, delivering his work on his own terms and according to his own obsessions. The patron who hired the painter invariably found himself also paying for the engineer, the scientist, and the philosopher.</p>
+                </div>
+                <div class="bio-item reveal reveal-delay-3">
+                    <h3>Final Years</h3>
+                    <p>In 1516, Francis I invited Leonardo to Amboise as "Premier Painter, Engineer, and Architect of the King." He died there on May 2, 1519 — reportedly in the arms of the King himself, a story that may be apocryphal but that captures the extraordinary regard in which he was held. He left roughly 7,000 notebook pages, fewer than 20 completed paintings, and an influence that has never dimmed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ NOTEBOOKS ══════════════════════════════════════ -->
+<section class="notebooks-section" id="notebooks">
+    <div class="container">
+        <p class="section-label reveal">The Codices</p>
+
+        <div class="notebooks-layout">
+            <div class="notebook-image-stack reveal-left">
+                <img
+                    class="notebook-main-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Leonardo_da_vinci%2C_Flying_machine.jpg/600px-Leonardo_da_vinci%2C_Flying_machine.jpg"
+                    alt="Leonardo da Vinci — flying machine design from his notebooks"
+                >
+                <img
+                    class="notebook-accent-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Da_Vinci_-_Helicopter_%28Aerial_Screw%29.jpg/400px-Da_Vinci_-_Helicopter_%28Aerial_Screw%29.jpg"
+                    alt="Leonardo's aerial screw — helicopter precursor"
+                >
+            </div>
+
+            <div class="notebooks-content">
+                <h2 class="section-title reveal">
+                    Witness to<br><em>a Universe</em>
+                </h2>
+                <p class="section-desc reveal" style="margin-top: 1.25rem;">
+                    Leonardo's notebooks are among the most extraordinary documents in human history — a restless archive of observation, theory, and invention written in his characteristic right-to-left mirror script. Of an estimated 13,000 original pages, roughly 7,000 survive, scattered across institutions from Milan to Windsor. Each page reveals a mind for which the boundary between art and science simply did not exist.
+                </p>
+                <p class="section-desc reveal reveal-delay-1" style="margin-top: 1rem;">
+                    He wrote about hydraulics and human proportion on the same page. He annotated anatomical drawings with poetry. He designed military fortifications beside studies of the flight of dragonflies. The notebooks are not a filing system — they are the raw stream of consciousness of the most curious mind on record.
+                </p>
+
+                <div class="codex-list">
+                    <div class="codex-item reveal reveal-delay-1">
+                        <div class="codex-name">Codex Leicester</div>
+                        <div class="codex-desc">Seventy-two pages of extraordinary observations on water, geology, and celestial light — including Leonardo's theory that the moon shines by reflected sunlight, a fact he deduced nearly a century before Galileo. Now owned by Bill Gates, who purchased it in 1994 for $30.8 million, it is the most expensive book ever sold. His study of water vortices in the codex prefigured modern fluid dynamics by three centuries.</div>
+                    </div>
+                    <div class="codex-item reveal reveal-delay-2">
+                        <div class="codex-name">Codex Atlanticus</div>
+                        <div class="codex-desc">The largest single collection of Leonardo's writings: 1,119 pages held in Milan's Biblioteca Ambrosiana, spanning five decades of work. It encompasses flying machines, weapons of war, musical instruments, solar-powered boilers, canal engineering, and geometric proofs. The breadth of a single manuscript is more expansive than most scholars' entire careers.</div>
+                    </div>
+                    <div class="codex-item reveal reveal-delay-3">
+                        <div class="codex-name">Windsor Royal Collection</div>
+                        <div class="codex-desc">Over 600 drawings held at Windsor Castle, including his most detailed anatomical studies. These pages show the human musculoskeletal system rendered in cross-section, exploded view, and rotational sequence — a visual methodology that modern medical illustrators still use and that medical imaging software has only recently surpassed in clarity.</div>
+                    </div>
+                    <div class="codex-item reveal reveal-delay-4">
+                        <div class="codex-name">Codex on the Flight of Birds</div>
+                        <div class="codex-desc">Eighteen concentrated pages dedicated solely to avian mechanics — how birds use updrafts, modulate lift through wing curvature, and exploit the physics of air resistance. Leonardo observed that birds steer with their tails rather than their wings, a fact aeronautics confirmed. The codex is the direct ancestor of his ornithopter designs and prefigures the Wright Brothers' systematic methodology by four centuries.</div>
+                    </div>
+                </div>
+
+                <div class="mirror-note reveal">
+                    <p><strong>The Mirror Script.</strong> Leonardo wrote exclusively in reverse — right to left — legible only in a mirror. Whether this was to protect his ideas from theft, to suit his left-handed grip, or to guard potentially heretical medical findings from the Church remains debated. What is certain is that it kept his most radical observations private for centuries, and that his handwriting is simultaneously one of the most beautiful and the most strategically obscure in history.</p>
+                </div>
+
+                <div class="pages-note reveal">
+                    The notebooks were never published in Leonardo's lifetime. He left them to his pupil Francesco Melzi, who died holding them. Within a generation they were scattered across Europe. The full significance of what Leonardo had recorded — in medicine, in engineering, in science — was not grasped until the 19th century.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ PAINTINGS ══════════════════════════════════════ -->
+<section class="paintings-section" id="paintings">
+    <div class="container">
+        <div class="paintings-header">
+            <div>
+                <p class="section-label reveal">The Master Works</p>
+                <h2 class="section-title reveal" style="margin-top: 0.75rem;">
+                    Acts of<br><em>Perception</em>
+                </h2>
+            </div>
+            <div>
+                <p class="section-desc reveal">
+                    Leonardo completed fewer than twenty paintings. Each was a laboratory: a site to test theories of light, atmospheric perspective, human psychology, and the geometry of emotion. His technique of sfumato — the deliberate softening of edges through glazed tonal gradients — was entirely his own invention and remains unmatched in Western painting.
+                </p>
+                <div class="sfumato-note reveal reveal-delay-1">
+                    <strong>Sfumato:</strong> from the Italian <em>fumo</em> (smoke). Leonardo built form through up to forty layers of translucent oil glaze, each mere microns thick. The effect mimics how the human eye actually perceives reality — never with hard edges, always in atmospheric gradation. Infrared reflectography of the Mona Lisa has revealed that Leonardo used his fingertips to blend the final glazes.
+                </div>
+            </div>
+        </div>
+
+        <div class="painting-gallery">
+            <!-- Mona Lisa — occupies 2 rows -->
+            <div class="painting-card painting-card--large reveal">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/400px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                    alt="Mona Lisa by Leonardo da Vinci, c. 1503–1519"
+                >
+                <div class="painting-overlay">
+                    <h3>Mona Lisa</h3>
+                    <div class="year">c. 1503 – 1519 · Oil on poplar</div>
+                    <p>The world's most studied painting. Lisa Gherardini — wife of Florentine merchant Francesco del Giocondo — sits in sfumato half-light, her expression shifting between amusement and inscrutability depending on where the viewer's gaze falls, an effect created by Leonardo's deliberate placement of shadows at the corners of her mouth and eyes. The atmospheric landscape behind her recedes in mathematically calculated aerial perspective, growing cooler and hazier with distance. Leonardo kept the painting until his death, never delivering it to its patron.</p>
+                    <span class="technique-tag">Sfumato · Aerial Perspective · Chiaroscuro</span>
+                </div>
+            </div>
+
+            <!-- The Last Supper -->
+            <div class="painting-card reveal reveal-delay-1">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg/640px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg"
+                    alt="The Last Supper by Leonardo da Vinci, c. 1495–1498"
+                >
+                <div class="painting-overlay">
+                    <h3>The Last Supper</h3>
+                    <div class="year">c. 1495 – 1498 · Tempera on plaster</div>
+                    <p>Painted in tempera on a dry plaster wall — a technically ill-fated choice that caused deterioration within Leonardo's lifetime — it captures the precise moment Christ announces his betrayal. Each of the twelve apostles reacts with psychologically distinct emotion, organized around rigorous one-point perspective that draws the eye inevitably to Christ's face. It is the earliest known painting to treat a group of figures as individual psychological studies rather than compositional elements.</p>
+                    <span class="technique-tag">One-Point Perspective · Psychological Portraiture</span>
+                </div>
+            </div>
+
+            <!-- Lady with an Ermine -->
+            <div class="painting-card reveal reveal-delay-2">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/400px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg"
+                    alt="Lady with an Ermine by Leonardo da Vinci, c. 1489–1490"
+                >
+                <div class="painting-overlay">
+                    <h3>Lady with an Ermine</h3>
+                    <div class="year">c. 1489 – 1490 · Oil on walnut</div>
+                    <p>Cecilia Gallerani, mistress of Ludovico Sforza, turns her gaze to meet something outside the frame — a compositional device that had never been used in portraiture before. The ermine she holds mirrors her alertness with precise anatomical correctness. It was the first portrait in Western art where both subject and animal exist in active psychological relationship, each occupying real space rather than decorative function.</p>
+                    <span class="technique-tag">Dynamic Portraiture · Three-Quarter Turn</span>
+                </div>
+            </div>
+
+            <!-- Vitruvian Man -->
+            <div class="painting-card reveal reveal-delay-1">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruvian_Man_Luc_Viatour.jpg/400px-Da_Vinci_Vitruvian_Man_Luc_Viatour.jpg"
+                    alt="Vitruvian Man by Leonardo da Vinci, c. 1490"
+                >
+                <div class="painting-overlay">
+                    <h3>Vitruvian Man</h3>
+                    <div class="year">c. 1490 · Pen, ink and watercolor on paper</div>
+                    <p>A meditation on Vitruvius's ideal human proportions, reinterpreted through Leonardo's measured study of actual bodies. He superimposed two poses — arms outstretched in a square, arms raised in a circle — to demonstrate that the human form contains both geometric ideals simultaneously. It established that the body is itself a mathematical system, and became the defining image of the Renaissance synthesis between art, science, and humanist philosophy.</p>
+                    <span class="technique-tag">Sacred Geometry · Anatomical Measurement</span>
+                </div>
+            </div>
+
+            <!-- Salvator Mundi -->
+            <div class="painting-card reveal reveal-delay-2">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Leonardo_da_Vinci%2C_Salvator_Mundi%2C_c.1500%2C_oil_on_walnut.jpg/400px-Leonardo_da_Vinci%2C_Salvator_Mundi%2C_c.1500%2C_oil_on_walnut.jpg"
+                    alt="Salvator Mundi attributed to Leonardo da Vinci, c. 1500"
+                >
+                <div class="painting-overlay">
+                    <h3>Salvator Mundi</h3>
+                    <div class="year">c. 1500 · Oil on walnut</div>
+                    <p>Christ depicted as Savior of the World. Sold in 2017 for $450.3 million — the highest price ever paid for a painting. Its attribution remains contested, though the crystal orb itself argues powerfully for Leonardo's hand: he correctly calculated how solid glass refracts light, rendering the sphere with optical physics that were not formally described until the 17th century. The painting was lost for centuries, rediscovered at a 2005 New Orleans auction for $1,175.</p>
+                    <span class="technique-tag">Optics · Sfumato · Symbolic Iconography</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ PAINTING TECHNIQUE ANALYSIS ══════════════════ -->
+<div class="sfumato-strip">
+    <div class="container">
+        <p class="section-label reveal">Technical Analysis</p>
+        <div class="sfumato-analysis" style="margin-top: 2.5rem;">
+            <div class="sfumato-col reveal">
+                <span class="technique-name">Sfumato</span>
+                <h3>The Smoke Technique</h3>
+                <p>Named for the Italian word for smoke or fog, sfumato is the blending of tones and colors without hard edges — simulating how the human eye actually perceives form in atmospheric conditions. Leonardo applied up to forty microscopically thin oil glazes, often using his fingertips rather than brushes. Modern infrared reflectography has confirmed this in the Mona Lisa. The technique creates psychological presence: the viewer's brain fills in the missing edges, completing the face as if from memory.</p>
+            </div>
+            <div class="sfumato-col reveal reveal-delay-1">
+                <span class="technique-name">Chiaroscuro</span>
+                <h3>Light Against Dark</h3>
+                <p>Leonardo developed chiaroscuro — the dramatic contrast between light and deep shadow — to a degree of sophistication no contemporary matched. Where earlier painters placed figures against uniformly lit backgrounds, Leonardo understood that the eye reads depth and volume through differential illumination. In "The Virgin of the Rocks," figures emerge from near-total darkness, lit as if by a source inside the viewer's space. Caravaggio, Rembrandt, and Baroque painting as a whole descended from this technique.</p>
+            </div>
+            <div class="sfumato-col reveal reveal-delay-2">
+                <span class="technique-name">Aerial Perspective</span>
+                <h3>Distance as Color</h3>
+                <p>Leonardo was the first painter to systematically codify aerial — or atmospheric — perspective: the observation that distant objects appear cooler, bluer, and less distinct as intervening air scatters light. He described the principle in his notebooks and applied it rigorously in the Mona Lisa background, where the right side of the landscape is painted at a slightly different height than the left — a deliberate asymmetry that makes the portrait subject appear to float between two different spatial realities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══ ANATOMY & DRAWINGS ════════════════════════════ -->
+<section class="anatomy-section" id="anatomy">
+    <div class="container">
+        <div class="anatomy-layout">
+            <div>
+                <p class="section-label reveal">Drawings & Anatomical Studies</p>
+                <h2 class="section-title reveal">
+                    The Architecture<br><em>of Life</em>
+                </h2>
+                <p class="section-desc reveal" style="margin-top: 1.25rem;">
+                    Between 1490 and 1513, Leonardo conducted the most systematic anatomical investigation in history to that point — dissecting over thirty human cadavers at a time when the Church actively discouraged the practice. What he found, and how he drew it, transformed our understanding of the body.
+                </p>
+                <p class="section-desc reveal reveal-delay-1" style="margin-top: 1rem;">
+                    He invented the visual conventions that modern anatomy still uses: cross-sectional views, rotational studies from multiple angles, exploded diagrams, and comparative illustrations. These were not just artistic choices — they were epistemological ones. Leonardo understood that a single view of a body part is insufficient; knowledge required showing the same object from every angle simultaneously.
+                </p>
+
+                <div class="anatomy-facts">
+                    <div class="anatomy-fact reveal">
+                        <span class="fact-num">200+</span>
+                        <div class="fact-text">
+                            <strong>Anatomical Drawings Produced</strong>
+                            <p>Covering the musculoskeletal system, cardiovascular system, reproductive system, and central nervous system in unprecedented detail. Modern surgeons report that Leonardo's illustrations of the shoulder and arm are more accurate in their spatial relationships than many 19th-century medical texts.</p>
+                        </div>
+                    </div>
+                    <div class="anatomy-fact reveal reveal-delay-1">
+                        <span class="fact-num">500</span>
+                        <div class="fact-text">
+                            <strong>Years Before Verification</strong>
+                            <p>Leonardo described the aortic valve's function with vortex blood flow in 1513. Cardiologists at the Royal Brompton Hospital in London confirmed his model was accurate only in 2014, using high-resolution MRI scanning. He had been proven correct — and had been sitting in the Windsor Royal Collection, unread, for five centuries.</p>
+                        </div>
+                    </div>
+                    <div class="anatomy-fact reveal reveal-delay-2">
+                        <span class="fact-num">1</span>
+                        <div class="fact-text">
+                            <strong>First Accurate Fetal Illustration in History</strong>
+                            <p>Leonardo drew the position of the fetus inside a dissected womb with anatomical precision that was not surpassed for over a hundred years. He also correctly identified the fetal circulation, a discovery not formally accepted until the 17th century. He made this observation from direct dissection of a pregnant woman who had died in childbirth.</p>
+                        </div>
+                    </div>
+                    <div class="anatomy-fact reveal reveal-delay-3">
+                        <span class="fact-num">30</span>
+                        <div class="fact-text">
+                            <strong>Years Studying Bird Flight</strong>
+                            <p>His Codex on Bird Flight was the culmination of three decades of observation. He identified that birds steer primarily with their tails, modulate lift through wing curvature, and exploit rising thermals — each confirmed by aeronautics. The codex is the conceptual ancestor of every manned flight attempt until the Wright Brothers, who employed the same systematic observational method.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="anatomy-images reveal-right">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Leonardo_da_Vinci%27s_anatomical_study_of_the_arm.jpg/600px-Leonardo_da_Vinci%27s_anatomical_study_of_the_arm.jpg"
+                    alt="Leonardo da Vinci — anatomical study of the arm, c. 1510–1511"
+                >
+                <img
+                    class="anatomy-img-secondary"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruvian_Man_Luc_Viatour.jpg/400px-Da_Vinci_Vitruvian_Man_Luc_Viatour.jpg"
+                    alt="Vitruvian Man — Leonardo da Vinci's study of human proportion, c. 1490"
+                >
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ INVENTIONS ═════════════════════════════════════ -->
+<section class="inventions-section" id="inventions">
+    <div class="container">
+        <div class="inventions-header">
+            <div>
+                <p class="section-label reveal">Engineering Tomorrow</p>
+                <h2 class="section-title reveal" style="margin-top: 0.75rem;">
+                    Designed centuries<br>before they could<br><em>be built.</em>
+                </h2>
+            </div>
+            <p class="section-desc reveal">
+                Most of Leonardo's engineering concepts could not be realized in his lifetime — they required materials, manufacturing tolerances, and propulsion systems that did not yet exist. Yet his drawings were functionally correct. In the 20th century, engineers and aerospace researchers built working models from his sketches without modification. The designs were not approximate. They were solutions waiting for the right century.
+            </p>
+        </div>
+
+        <div class="inventions-grid">
+            <!-- Aerial Screw -->
+            <div class="invention-card reveal">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L8 9H4L10 14L8 22L12 17L16 22L14 14L20 9H16L12 2Z"/></svg>
+                </div>
+                <div class="invention-year">c. 1485 — Codex Atlanticus</div>
+                <div class="invention-name">Aerial Screw</div>
+                <div class="invention-desc">A helical air-screw designed to compress air and generate vertical lift — the direct conceptual predecessor of the modern helicopter rotor. Leonardo derived the design from his study of Archimedean screws applied to air rather than water. The pitch and blade angle of his design align with aerodynamic principles that the Wright Brothers would confirm four centuries later. The key constraint he could not overcome: a sufficiently powerful and lightweight engine.</div>
+                <div class="invention-verified">Functionally verified — working replica built, 20th century</div>
+            </div>
+
+            <!-- Parachute -->
+            <div class="invention-card reveal reveal-delay-1">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M12 21V12"/><path d="M3 12c3 4.5 6 6 9 9"/><path d="M21 12c-3 4.5-6 6-9 9"/></svg>
+                </div>
+                <div class="invention-year">c. 1485 — Codex Atlanticus</div>
+                <div class="invention-name">Parachute</div>
+                <div class="invention-desc">A linen pyramid mounted on a rigid square wooden frame — the first recorded parachute design in history. In June 2000, British skydiver Adrian Nicholas constructed a replica from Leonardo's sketches using only period materials and jumped from 3,000 meters. It worked. He described the ride as smoother than any modern parachute he had used, due to the rigidity of the frame preventing oscillation. He cut away to a modern parachute for the final portion of the descent.</div>
+                <div class="invention-verified">Successfully tested — June 26, 2000, by Adrian Nicholas</div>
+            </div>
+
+            <!-- Armored Vehicle -->
+            <div class="invention-card reveal reveal-delay-2">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="9" width="22" height="9" rx="2"/><path d="M5 9V5h14v4"/><circle cx="8" cy="18" r="1"/><circle cx="16" cy="18" r="1"/></svg>
+                </div>
+                <div class="invention-year">c. 1487 — Letter to Ludovico Sforza</div>
+                <div class="invention-name">Armored Fighting Vehicle</div>
+                <div class="invention-desc">A turtle-shaped covered wagon armed with cannons in all directions, powered by men turning cranks and capable of moving in any direction — the first design for what we recognize as a tank. When the BBC built a replica in 2009, engineers discovered a deliberate mechanical flaw in the drive configuration: the front and rear wheels turned in opposite directions, making the vehicle immovable. Historians believe this was intentional — Leonardo embedding a fail-safe in case the design was stolen.</div>
+                <div class="invention-verified">Deliberate flaw discovered — BBC engineers, 2009</div>
+            </div>
+
+            <!-- Robotic Knight -->
+            <div class="invention-card reveal">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5v3H7V7a5 5 0 0 1 5-5z"/><rect x="7" y="10" width="10" height="12" rx="1"/><path d="M7 14H4a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h3"/><path d="M17 14h3a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-3"/></svg>
+                </div>
+                <div class="invention-year">c. 1495 — Codex Atlanticus</div>
+                <div class="invention-name">Programmable Mechanical Knight</div>
+                <div class="invention-desc">A fully articulated suit of armor driven by cables and pulleys, designed to sit, stand, raise its visor, and move its jaw and arms through a pre-set sequence — the world's first recorded programmable automaton. NASA roboticist Mark Rosheim built a working model from Leonardo's drawings in 2002, without supplemental engineering, and used the underlying cable-drive principles to design planetary exploration robots for NASA's Mars missions.</div>
+                <div class="invention-verified">Principles used in NASA Mars robots — Mark Rosheim, 2002</div>
+            </div>
+
+            <!-- Submarine -->
+            <div class="invention-card reveal reveal-delay-1">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/><path d="M12 5V2M12 22v-3"/></svg>
+                </div>
+                <div class="invention-year">c. 1488 — Notebook sketch</div>
+                <div class="invention-name">Submarine & Diving Apparatus</div>
+                <div class="invention-desc">A wineskin-based diving suit with surface-connected breathing tubes, glass goggles, and a conceptual vessel for underwater travel — a direct precursor of modern SCUBA apparatus. Leonardo deliberately kept the submarine design vague, writing: "How and why I do not describe my method of remaining under water, or how long I can stay without eating; and I do not publish nor divulge these by reason of the evil nature of men, who would practice assassinations at the bottom of the seas."</div>
+                <div class="invention-verified">Intentionally incomplete — Leonardo feared weaponization</div>
+            </div>
+
+            <!-- Solar Power Concentrator -->
+            <div class="invention-card reveal reveal-delay-2">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </div>
+                <div class="invention-year">c. 1515 — Codex Atlanticus</div>
+                <div class="invention-name">Solar Power Concentrator</div>
+                <div class="invention-desc">A large concave mirror array — designed in parabolic geometry — to concentrate solar energy for industrial heating of water boilers for textile manufacturing. The mathematics of his reflectors were calculated correctly for solar concentration. What Leonardo designed is functionally a parabolic solar collector, identical in principle to the concentrating solar power plants that generate electricity in the Mojave Desert and the Atacama today. He was working from optics; they are working from thermodynamics. The geometry is the same.</div>
+                <div class="invention-verified">Geometry matches modern CSP plant design — independently verified</div>
+            </div>
+
+            <!-- Ornithopter -->
+            <div class="invention-card reveal">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.5L12 2 2 16.5"/><path d="M22 16.5L12 12M2 16.5L12 12"/><path d="M12 12v9"/></svg>
+                </div>
+                <div class="invention-year">c. 1485 — Codex on Flight of Birds</div>
+                <div class="invention-name">Ornithopter (Human-Powered Flapping Flight)</div>
+                <div class="invention-desc">A machine with articulated wings driven by a prone pilot's arms and legs, designed to replicate the mechanical basis of bird flight. Multiple configurations appear in Leonardo's notebooks, each revised as his understanding of avian mechanics deepened. His core error — that human muscular power was sufficient to achieve lift — was physically correct for the mechanism but underestimated the human body's power-to-weight deficiency. Modern ornithopter designers continue to cite his wing geometry as a baseline.</div>
+                <div class="invention-verified">Wing geometry cited by modern ornithopter engineers</div>
+            </div>
+
+            <!-- Revolving Bridge -->
+            <div class="invention-card reveal reveal-delay-1">
+                <div class="invention-icon">
+                    <svg viewBox="0 0 24 24"><path d="M2 18h20M2 18V6l10-4 10 4v12"/><path d="M12 18V2"/><path d="M8 18v-4M16 18v-4"/></svg>
+                </div>
+                <div class="invention-year">c. 1480 — Codex Atlanticus</div>
+                <div class="invention-name">Revolving & Portable Bridge</div>
+                <div class="invention-desc">A rapidly deployable military bridge that could be assembled and swung into position across a river in a matter of hours, enabling army crossings without fixed infrastructure. A second design shows a collapsible rope-and-beam bridge that soldiers could carry and assemble in the field. Modern military engineers building rapidly deployable bridging systems for the U.S. Army Corps of Engineers cite Leonardo's work in their conceptual history, as the underlying cantilever logic is structurally identical.</div>
+                <div class="invention-verified">Cantilever logic cited in U.S. Army Corps of Engineers history</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ MODERN LEGACY ══════════════════════════════════ -->
+<section class="legacy-section" id="legacy">
+    <div class="container">
+        <div class="legacy-header">
+            <div>
+                <p class="section-label reveal">Then &amp; Now</p>
+                <h2 class="section-title reveal" style="margin-top: 0.75rem;">
+                    Five centuries<br><em>ahead.</em>
+                </h2>
+            </div>
+            <p class="section-desc reveal">
+                Leonardo's innovations did not merely predict the future — they founded it. In discipline after discipline, modern practitioners have traced their foundational concepts directly to pages in his notebooks. What follows are not metaphors or loose analogies. They are direct intellectual lineages, with verifiable connections documented by researchers, engineers, and physicians.
+            </p>
+        </div>
+
+        <div class="legacy-table">
+            <div class="legacy-table-head">
+                <div class="legacy-col-title">Leonardo's Work — 15th to 16th Century</div>
+                <div class="legacy-col-title">Modern Equivalent — 21st Century</div>
+            </div>
+
+            <div class="legacy-row reveal">
+                <div class="legacy-then">
+                    <div class="legacy-item-era">Painting Technique</div>
+                    <div class="legacy-item-title">Sfumato & Graduated Tonal Blending</div>
+                    <div class="legacy-item-desc">Leonardo discovered that the human eye cannot simultaneously focus on edges and color — so he eliminated hard edges entirely, building form through infinitely gradated tonal transitions applied in up to forty glazes of translucent oil paint, each layer barely visible to the naked eye. The result was a perceptual effect no earlier painter had achieved: figures that appear to breathe.</div>
+                </div>
+                <div class="legacy-now">
+                    <div class="legacy-item-era">Computational Photography</div>
+                    <div class="legacy-item-title">Depth-of-Field Algorithms & Portrait Mode</div>
+                    <div class="legacy-item-desc">Modern computational photography replicates sfumato's optical logic precisely: depth-of-field algorithms simulate the same eye-perception falloff Leonardo exploited. The "portrait mode" on current smartphones applies gaussian blur gradients keyed to depth maps, recreating the selective focus effect Leonardo built by hand. The perceptual psychology underlying the feature is his — we now execute it in silicon at 60 frames per second.</div>
+                </div>
+            </div>
+
+            <div class="legacy-row reveal reveal-delay-1">
+                <div class="legacy-then">
+                    <div class="legacy-item-era">Anatomical Study</div>
+                    <div class="legacy-item-title">Cross-Section & Exploded-View Drawing</div>
+                    <div class="legacy-item-desc">Leonardo invented the technique of showing the body in transparent, layered, and exploded cross-sections — a visual methodology for communicating three-dimensional structure in two dimensions without sacrificing spatial accuracy. He combined multiple viewing angles on a single page, annotated with measurement ratios, creating the first anatomical atlas that functioned as both art and reference document.</div>
+                </div>
+                <div class="legacy-now">
+                    <div class="legacy-item-era">Medical Imaging</div>
+                    <div class="legacy-item-title">CT Scanning, MRI & Surgical Planning Software</div>
+                    <div class="legacy-item-desc">CT and MRI imaging generate the same layered interior views Leonardo drew from cadavers. His multi-angle annotation method is now standard protocol in surgical planning software — operating theaters use pre-surgical 3D reconstructions that are epistemologically identical to a Leonardo notebook page. The Royal Brompton Hospital's 2014 verification of his cardiac vortex model was performed using the same cross-sectional methodology he established.</div>
+                </div>
+            </div>
+
+            <div class="legacy-row reveal reveal-delay-2">
+                <div class="legacy-then">
+                    <div class="legacy-item-era">Engineering Design</div>
+                    <div class="legacy-item-title">Aerial Screw & Ornithopter Wing Studies</div>
+                    <div class="legacy-item-desc">From thirty years studying birds and his own aerodynamic calculations, Leonardo concluded that a helical airfoil could compress air and generate lift, and that cambered wing surfaces could generate sustainable forward flight. He designed multiple flying machine configurations between 1485 and 1505, each incorporating insights from his anatomical study of birds.</div>
+                </div>
+                <div class="legacy-now">
+                    <div class="legacy-item-era">Aerospace Engineering</div>
+                    <div class="legacy-item-title">Helicopter Rotors & NASA Mars Drone Ingenuity</div>
+                    <div class="legacy-item-desc">The aerodynamic principle of the modern helicopter rotor — a helical blade generating lift through air compression — is functionally equivalent to Leonardo's aerial screw. NASA's Mars drone Ingenuity uses counter-rotating blades whose geometric rationale matches his design. The Wright Brothers used his same systematic observational methodology: study birds, measure results, refine the mechanism. They acknowledged Leonardo's priority in the intellectual history of flight.</div>
+                </div>
+            </div>
+
+            <div class="legacy-row reveal">
+                <div class="legacy-then">
+                    <div class="legacy-item-era">Scientific Observation</div>
+                    <div class="legacy-item-title">Water Vortex & Fluid Dynamics Studies</div>
+                    <div class="legacy-item-desc">Leonardo spent decades studying how water moves — documenting vortices, eddies, wave interference, laminar flow, and turbulent channel dynamics in the Codex Leicester and elsewhere. His observations were qualitative but geometrically exact. He identified that water flowing around an obstacle generates trailing spirals — a phenomenon that took mathematics two more centuries to formalize.</div>
+                </div>
+                <div class="legacy-now">
+                    <div class="legacy-item-era">Fluid Dynamics</div>
+                    <div class="legacy-item-title">Navier-Stokes Equations & Computational Fluid Dynamics</div>
+                    <div class="legacy-item-desc">Modern CFD software models the phenomena Leonardo sketched by hand. The vortex behavior he documented in flowing water was mathematically described by Navier and Stokes in the 19th century, and their equations now run in aerospace simulations, climate models, and cardiovascular simulators worldwide. Engineers at Boeing and Airbus reference Leonardo's fluid observations in historical documentation as the first systematic study of the phenomena their algorithms model.</div>
+                </div>
+            </div>
+
+            <div class="legacy-row reveal reveal-delay-1">
+                <div class="legacy-then">
+                    <div class="legacy-item-era">Mechanical Engineering</div>
+                    <div class="legacy-item-title">Cable-Drive Robotic Knight Automaton</div>
+                    <div class="legacy-item-desc">A fully articulated mechanical suit of armor driven through a cable-and-pulley transmission system, designed to move through a pre-programmed sequence of positions. The transmission architecture isolated each limb's motion to a separate cable pathway, allowing independent actuation — the same modularity that makes modern cable-driven robots repairable and reconfigurable in the field.</div>
+                </div>
+                <div class="legacy-now">
+                    <div class="legacy-item-era">Robotics</div>
+                    <div class="legacy-item-title">Surgical Robots, Humanoid Platforms & Space Exploration</div>
+                    <div class="legacy-item-desc">Cable-driven parallel robots — used in minimally invasive surgical systems, rehabilitation exoskeletons, and deep-sea manipulators — use the same transmission principle Leonardo designed. Mark Rosheim's working replica of the mechanical knight led directly to cable-drive joint architectures deployed in NASA planetary exploration programs. Boston Dynamics' humanoid robots and Intuitive Surgical's Da Vinci surgical system share kinematic lineages his automaton established.</div>
+                </div>
+            </div>
+
+            <div class="legacy-row reveal reveal-delay-2">
+                <div class="legacy-then">
+                    <div class="legacy-item-era">Optics & Physics</div>
+                    <div class="legacy-item-title">Solar Concentrator Mirror Array</div>
+                    <div class="legacy-item-desc">A parabolic mirror system designed to concentrate solar radiation onto a boiler for industrial heating — proposed for a textile operation in Florence. The mathematical basis of his mirror geometry was derived from his study of optics and Euclid. His design requires no modification to function as a solar concentrator by modern engineering definitions; the parabolic geometry is identical to operating facilities.</div>
+                </div>
+                <div class="legacy-now">
+                    <div class="legacy-item-era">Renewable Energy</div>
+                    <div class="legacy-item-title">Concentrating Solar Power Plants</div>
+                    <div class="legacy-item-desc">Parabolic-trough and power-tower solar concentrators — which generate grid-scale electricity in California, Spain, Morocco, and Chile — operate on Leonardo's geometric principle. The Ivanpah Solar Electric Generating System in the Mojave Desert uses 347,000 mirrors to concentrate sunlight onto boilers. Leonardo proposed the identical architecture for industrial heat in 1515. The intervening five centuries produced the turbine and the transmission grid, not the concept.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ TIMELINE ═══════════════════════════════════════ -->
+<section class="timeline-section" id="timeline">
+    <div class="container">
+        <div class="timeline-header">
+            <p class="section-label reveal">A Life in Time</p>
+            <h2 class="section-title reveal" style="margin-top: 0.75rem; max-width: 18ch;">
+                Sixty-seven years.<br><em>Infinite reach.</em>
+            </h2>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-spine" id="timeline-spine">
+                <div class="timeline-spine-fill" id="timeline-fill"></div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Birth</div>
+                    <div class="t-year">1452</div>
+                    <div class="t-event">Born in Vinci, Tuscany</div>
+                    <div class="t-detail">April 15. Illegitimate son of notary Ser Piero da Vinci and peasant woman Caterina. Named after his birthplace, the village of Vinci in the Florentine countryside.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+
+            <div class="timeline-event reveal reveal-delay-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left"></div>
+                <div class="timeline-right">
+                    <div class="t-type-tag">Apprenticeship</div>
+                    <div class="t-year">1466</div>
+                    <div class="t-event">Enters Verrocchio's Workshop</div>
+                    <div class="t-detail">Age fourteen. Sent to Florence to apprentice under Andrea del Verrocchio, the most celebrated studio master in the city. His peers included Botticelli and Perugino.</div>
+                </div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Milestone</div>
+                    <div class="t-year">1472</div>
+                    <div class="t-event">Joins the Guild of Saint Luke</div>
+                    <div class="t-detail">Registered as a master painter in Florence's Guild of Saint Luke — the formal qualification that permitted independent professional practice. He remained in Verrocchio's workshop for several more years by choice.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+
+            <div class="timeline-event reveal reveal-delay-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left"></div>
+                <div class="timeline-right">
+                    <div class="t-type-tag">Milan</div>
+                    <div class="t-year">1482</div>
+                    <div class="t-event">Arrives at the Court of Ludovico Sforza</div>
+                    <div class="t-detail">Moves to Milan, entering the court of Ludovico "Il Moro" Sforza as a painter, musician, theatrical designer, and military engineer. Begins the two most productive decades of invention in his life. The letter he sent Sforza advertising his services lists ten military engineering capabilities before mentioning painting as an afterthought.</div>
+                </div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Drawing</div>
+                    <div class="t-year">1490</div>
+                    <div class="t-event">Vitruvian Man</div>
+                    <div class="t-detail">Drawn in pen and ink in Milan, alongside notes on ideal human proportion derived from Vitruvius. The two superimposed poses — arms outstretched in a square, arms raised in a circle — established that the body contains both geometric ideals simultaneously. It became the defining image of Renaissance humanism.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+
+            <div class="timeline-event reveal reveal-delay-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left"></div>
+                <div class="timeline-right">
+                    <div class="t-type-tag">Masterwork</div>
+                    <div class="t-year">1495 – 1498</div>
+                    <div class="t-event">Paints The Last Supper</div>
+                    <div class="t-detail">Commissioned by Ludovico Sforza for the refectory of Santa Maria delle Grazie. Completed in tempera on dry plaster — a method Leonardo preferred for its matte surface quality, but which proved catastrophically unstable. The painting began deteriorating within his lifetime. It has been restored nine times since. Still the most studied mural in history.</div>
+                </div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Anatomy</div>
+                    <div class="t-year">1500 – 1513</div>
+                    <div class="t-event">Peak Anatomical Studies</div>
+                    <div class="t-detail">Conducts systematic dissections of human cadavers across hospitals in Florence, Milan, and Rome. Produces over 200 anatomical drawings, correctly mapping the heart chambers and vortex blood flow, the fetal position in the uterus, and the branching structure of the bronchial tree — discoveries that would not be formally published until the following century.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+
+            <div class="timeline-event reveal reveal-delay-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left"></div>
+                <div class="timeline-right">
+                    <div class="t-type-tag">Masterwork</div>
+                    <div class="t-year">1503 – 1519</div>
+                    <div class="t-event">Works on the Mona Lisa</div>
+                    <div class="t-detail">Reportedly commissioned by Florentine merchant Francesco del Giocondo for his wife Lisa Gherardini. Leonardo never delivered it, keeping the panel with him through Milan, Rome, and France. He reportedly continued refining it until his final years. He traveled with it as a companion for sixteen years.</div>
+                </div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Discovery</div>
+                    <div class="t-year">1513</div>
+                    <div class="t-event">Maps the Heart's Vortex Flow</div>
+                    <div class="t-detail">Completes the most detailed drawings of the human heart ever produced to that point, correctly describing the four chambers and modeling how blood forms vortices as it passes through the aortic valve — a model that cardiologists at the Royal Brompton Hospital confirmed accurate using MRI technology in 2014, five centuries later.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+
+            <div class="timeline-event reveal reveal-delay-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left"></div>
+                <div class="timeline-right">
+                    <div class="t-type-tag">Final Chapter</div>
+                    <div class="t-year">1516</div>
+                    <div class="t-event">Moves to France — Guest of Francis I</div>
+                    <div class="t-detail">Invited by King Francis I to reside at the Château du Clos Lucé in Amboise, connected to the royal Château d'Amboise by an underground tunnel. Given the title "Premier Painter, Engineer, and Architect of the King," a stipend, and complete freedom to pursue whatever work he chose. He spent his final three years in France, continuing to write, draw, and plan.</div>
+                </div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Death</div>
+                    <div class="t-year">1519</div>
+                    <div class="t-event">Dies in Amboise, France</div>
+                    <div class="t-detail">May 2. Age sixty-seven. Reportedly in the arms of King Francis I — a story that may be apocryphal but that Vasari recorded and that captures the extraordinary personal regard in which he was held. He left 7,000 notebook pages, fewer than 20 completed paintings, an annotated library, and questions in every discipline he touched that took subsequent centuries to answer.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+
+            <div class="timeline-event reveal reveal-delay-1">
+                <div class="timeline-dot" style="background: var(--accent-2);"></div>
+                <div class="timeline-left"></div>
+                <div class="timeline-right">
+                    <div class="t-type-tag">Legacy</div>
+                    <div class="t-year">1994</div>
+                    <div class="t-event">Codex Leicester Sold for $30.8 Million</div>
+                    <div class="t-detail">Bill Gates purchases the Codex Leicester at auction — 72 pages of Leonardo's observations on water, geology, and celestial light — for $30.8 million, the highest price ever paid for a manuscript. Gates digitized the pages and made them publicly accessible worldwide, completing a transmission of knowledge that Leonardo began in 15th-century Milan.</div>
+                </div>
+            </div>
+
+            <div class="timeline-event reveal">
+                <div class="timeline-dot" style="background: var(--accent-2);"></div>
+                <div class="timeline-left">
+                    <div class="t-type-tag">Verification</div>
+                    <div class="t-year">2014</div>
+                    <div class="t-event">Cardiac Model Confirmed by MRI</div>
+                    <div class="t-detail">Cardiologists at the Royal Brompton Hospital in London use high-resolution MRI scanning to confirm Leonardo's 1513 model of vortex blood flow through the aortic valve was anatomically correct. The verification closes a loop opened five centuries earlier: Leonardo had seen what medicine would not officially understand until the 21st century.</div>
+                </div>
+                <div class="timeline-right"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ CLOSING QUOTE ══════════════════════════════════ -->
+<div class="closing-section">
+    <div class="container">
+        <blockquote class="closing-quote reveal">
+            "I have been impressed by the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do."
+            <cite>— Leonardo da Vinci</cite>
+        </blockquote>
+        <p class="closing-sub reveal reveal-delay-2">
+            Painter · Anatomist · Engineer · Philosopher · 1452 – 1519
+        </p>
+    </div>
+</div>
+
+
+<!-- ═══ FOOTER ═════════════════════════════════════════ -->
+<footer>
+    <div class="footer-logo">Da Vinci</div>
+    <div class="footer-center">
+        <p>An exploration of the perpetual genius — Leonardo da Vinci, 1452 – 1519</p>
+        <p style="margin-top: 0.25rem;">All original artwork and manuscripts reproduced from the public domain via Wikimedia Commons</p>
+    </div>
+    <div class="footer-right">
+        <p>Research sources: Royal Brompton Hospital, NASA, Biblioteca Ambrosiana</p>
+        <p style="margin-top: 0.25rem;">Windsor Royal Collection, Musée du Louvre, Vasari's Lives of the Artists</p>
+    </div>
+</footer>
+
+
+<!-- ═══ JAVASCRIPT ═════════════════════════════════════ -->
+<script>
+    // Scroll reveal using IntersectionObserver
+    const revealSelectors = ['.reveal', '.reveal-left', '.reveal-right'];
+    const revealEls = document.querySelectorAll(revealSelectors.join(','));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Navbar scroll state
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }, { passive: true });
+
+    // Active section tracking for nav links
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.45 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Timeline spine fill on scroll
+    const timelineFill = document.getElementById('timeline-fill');
+    const timelineSection = document.querySelector('.timeline-section');
+
+    if (timelineFill && timelineSection) {
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timelineFill.style.height = '100%';
+                }
+            });
+        }, { threshold: 0.08 });
+        timelineObserver.observe(timelineSection);
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const offset = 80;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Subtle parallax on hero portrait
+    const heroPortrait = document.querySelector('.hero-portrait');
+    if (heroPortrait) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if (scrolled < window.innerHeight) {
+                heroPortrait.style.transform = 'translateY(' + (scrolled * 0.12) + 'px)';
+            }
+        }, { passive: true });
+    }
+
+    // Image load fallbacks for Wikimedia images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function () {
+            this.style.background = 'var(--bg-warm-2)';
+            this.style.minHeight = '200px';
+            this.removeAttribute('src');
+        });
+    });
+</script>
+
+</body>
+</html>
